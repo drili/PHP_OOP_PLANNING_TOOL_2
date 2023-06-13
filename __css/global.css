@@ -1,0 +1,158 @@
+/*------------------------------------------------------------------
+// Root & Variables
+------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+:root {
+    --font-size-h1-mobile: 30px;
+    --font-size-h2-mobile: 20px;
+    --font-size-h3-mobile: 18px;
+    --font-size-h4-mobile: 16px;
+    --font-size-h5-mobile: 14px;
+    --font-size-h6-mobile: 12px;
+    --font-size-p-mobile: 14px;
+    --font-size-a-mobile: 14px;
+
+    --line-height-mobile: 1.5;
+
+    --font-size-h1-desktop: 40px;
+    --font-size-h2-desktop: 28px;
+    --font-size-h3-desktop: 24px;
+    --font-size-h4-desktop: 20px;
+    --font-size-h5-desktop: 18px;
+    --font-size-h6-desktop: 16px;
+    --font-size-p-desktop: 16px;
+    --font-size-a-desktop: 16px;
+
+    --line-height-desktop: 1.6;
+
+    --font-family: Arial, sans-serif;
+    --font-weight-bold: bold;
+    --font-weight-normal: normal;
+
+    --font-family: 'Inter', sans-serif;
+}
+
+
+/*------------------------------------------------------------------
+// Headings
+------------------------------------------------------------------*/
+h1 {
+    font-size: var(--font-size-h1-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-bold);
+}
+
+h2 {
+    font-size: var(--font-size-h2-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-bold);
+}
+
+h3 {
+    font-size: var(--font-size-h3-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-bold);
+}
+
+h4 {
+    font-size: var(--font-size-h4-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-bold);
+}
+
+h5 {
+    font-size: var(--font-size-h5-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-bold);
+}
+
+h6 {
+    font-size: var(--font-size-h6-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-bold);
+}
+
+p {
+    font-size: var(--font-size-p-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-normal);
+}
+
+a {
+    font-size: var(--font-size-a-desktop);
+    line-height: var(--line-height-desktop);
+    font-weight: var(--font-weight-normal);
+    text-decoration: none;
+    color: #007bff;
+}
+
+@media screen and (max-width: 990px) {
+    h1 {
+        font-size: var(--font-size-h1-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-bold);
+    }
+
+    h2 {
+        font-size: var(--font-size-h2-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-bold);
+    }
+
+    h3 {
+        font-size: var(--font-size-h3-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-bold);
+    }
+
+    h4 {
+        font-size: var(--font-size-h4-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-bold);
+    }
+
+    h5 {
+        font-size: var(--font-size-h5-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-bold);
+    }
+
+    h6 {
+        font-size: var(--font-size-h6-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-bold);
+    }
+
+    p {
+        font-size: var(--font-size-p-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-normal);
+    }
+
+    a {
+        font-size: var(--font-size-a-mobile);
+        line-height: var(--line-height-mobile);
+        font-weight: var(--font-weight-normal);
+        text-decoration: none;
+        color: #007bff;
+    }   
+}
+
+/*------------------------------------------------------------------
+// GLobals
+------------------------------------------------------------------*/
+* {
+    font-family: var(--font-family) !important;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container-outter,
+.container-custom {
+    height: 100%;
+}
