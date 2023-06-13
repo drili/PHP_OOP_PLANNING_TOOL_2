@@ -39,6 +39,10 @@
                                 <button type="submit">Register</button>
                             </form>
                         </div>
+
+                        <div class="misc">
+                            <a href="index.php">Login</a>
+                        </div>
                     </div>
                 </div> <!-- .cell-main -->
 

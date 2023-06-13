@@ -20,7 +20,13 @@
             $result = $this->db->conn->query($query);
 
             if ($result) {
-                return "SUCCESS_USER_CREATED";
+                // *** Insert into "darkmode" table
+                $query_insert = "INSERT INTO darkmode (user_email) VALUES ('$email')";
+                $query_insert_res = $this->db->conn->query($query_insert);
+
+                if ($query_insert_res) {
+                    return "SUCCESS_USER_CREATED";
+                }
             } else {
                 return "ERROR_USER_CREATED";
             }
@@ -43,6 +49,7 @@
                         'user_title' => $user['user_title'],
                         'user_role' => $user['user_role'],
                         'user_activated' => $user['user_activated'],
+                        'darkmode' => $user["darkmode"],
                         'logged_in' => "LOGGED_IN"
                     );
 
