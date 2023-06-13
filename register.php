@@ -6,18 +6,17 @@
     // *** Include header.php & files
     require $current_directory . "/parts/header.php";
 
-    // FIXME:
-    // - Refactor to AJAX request
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $login_res = $user->login($email, $password);
+        $register_result = $user->register($username, $email, $password);
 
-        if($login_res === "SUCCESS_LOGIN") {
-            echo "::: LOGIN SUCCESS";
+        if ($register_result === "SUCCESS_USER_CREATED") {
+            echo "::: REGISTER SUCCESS";
         } else {
-            echo "::: LOGIN FAILED";
+            echo "::: ERROR LOGIN";
         }
     }
 ?>
@@ -30,13 +29,14 @@
 
                 <div class="cell cell-main small-12">
                     <div class="cell-inner">
-                        <h1>INDEX.PHP</h1>
+                        <h1>REGISTER.PHP</h1>
 
                         <div class="box-register">
                             <form method="POST" action="">
+                                <input type="text" name="username" placeholder="Username" required>
                                 <input type="email" name="email" placeholder="Email" required>
                                 <input type="password" name="password" placeholder="Password" required>
-                                <button type="submit">Login</button>
+                                <button type="submit">Register</button>
                             </form>
                         </div>
                     </div>
