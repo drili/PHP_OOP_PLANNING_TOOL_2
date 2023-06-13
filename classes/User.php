@@ -7,9 +7,16 @@
         }
 
         public function register($username, $email, $password) {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $check_query = "SELECT * FROM users WHERE email = '$email'";
+            $check_query_res = $this->db->conn->query($check_query);
 
-            $query = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
+            if ($check_query_res->num_rows > 0) {
+                return "ERROR_USER_EXISTS";
+            }
+
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
             $result = $this->db->conn->query($query);
 
             if ($result) {
@@ -35,7 +42,8 @@
                         'profile_image' => $user['profile_image'],
                         'user_title' => $user['user_title'],
                         'user_role' => $user['user_role'],
-                        'user_activated' => $user['user_activated']
+                        'user_activated' => $user['user_activated'],
+                        'logged_in' => "LOGGED_IN"
                     );
 
                     return "SUCCESS_LOGIN";
@@ -46,6 +54,21 @@
         }
 
         public function logout() {
+            // *** Clear all session variables
+            $_SESSION = array();
             unset($_SESSION["user"]);
+
+            // *** Delete the session cookie
+            if (ini_get("session.use_cookie")) {
+                $params = session_get_cookie_params();
+
+                setcookie(session_name(), "", time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+
+            // *** Destroy the session
+            session_destroy();
         }
     }

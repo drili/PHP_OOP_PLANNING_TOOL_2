@@ -8,18 +8,18 @@
 
     // FIXME:
     // - Refactor to AJAX request
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    // if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //     $email = $_POST['email'];
+    //     $password = $_POST['password'];
 
-        $login_res = $user->login($email, $password);
+    //     $login_res = $user->login($email, $password);
 
-        if($login_res === "SUCCESS_LOGIN") {
-            echo "::: LOGIN SUCCESS";
-        } else {
-            echo "::: LOGIN FAILED";
-        }
-    }
+    //     if($login_res === "SUCCESS_LOGIN") {
+    //         echo "::: LOGIN SUCCESS";
+    //     } else {
+    //         echo "::: LOGIN FAILED";
+    //     }
+    // }
 ?>
 
 <div class="container-outter">
@@ -33,7 +33,7 @@
                         <h1>INDEX.PHP</h1>
 
                         <div class="box-register">
-                            <form method="POST" action="">
+                            <form method="POST" action="" id="loginForm">
                                 <input type="email" name="email" placeholder="Email" required>
                                 <input type="password" name="password" placeholder="Password" required>
                                 <button type="submit">Login</button>
@@ -52,3 +52,5 @@
     // *** Include footer.php
     require_once $current_directory . '/parts/footer.php';
 ?>
+
+<script src="__js/pages/root/index.js"></script>

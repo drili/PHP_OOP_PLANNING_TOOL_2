@@ -14,9 +14,9 @@
         $register_result = $user->register($username, $email, $password);
 
         if ($register_result === "SUCCESS_USER_CREATED") {
-            echo "::: REGISTER SUCCESS";
+            echo $register_result;
         } else {
-            echo "::: ERROR LOGIN";
+            echo $register_result;
         }
     }
 ?>
