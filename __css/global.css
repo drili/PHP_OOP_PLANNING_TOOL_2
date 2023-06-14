@@ -2,6 +2,7 @@
 // Root & Variables
 ------------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
     --font-size-h1-mobile: 30px;
@@ -11,7 +12,7 @@
     --font-size-h5-mobile: 14px;
     --font-size-h6-mobile: 12px;
     --font-size-p-mobile: 14px;
-    --font-size-a-mobile: 14px;
+    --font-size-a-mobile: 12px;
 
     --line-height-mobile: 1.5;
 
@@ -22,7 +23,7 @@
     --font-size-h5-desktop: 18px;
     --font-size-h6-desktop: 16px;
     --font-size-p-desktop: 16px;
-    --font-size-a-desktop: 16px;
+    --font-size-a-desktop: 14px;
     --font-size-small: 12px;
 
     --line-height-desktop: 1.6;
@@ -32,7 +33,7 @@
     --font-weight-600: 600;
     --font-weight-normal: normal;
 
-    --font-family: 'Inter', sans-serif;
+    --font-family: 'Poppins', sans-serif;
 
     --color-primary: #081226;
     --color-primary-light: #686f79;
@@ -40,6 +41,7 @@
     --color-black: #000;
     --color-light-bg: #f1f3f4;
     --color-gray: #e4e9ea;
+    --color-gray-light: #cbcdd1;
     --color-font-light: #b8bec0;
 
     --color-purple: #613686;
@@ -100,6 +102,10 @@ h6 {
     font-size: var(--font-size-h6-desktop);
     line-height: var(--line-height-desktop);
     font-weight: var(--font-weight-bold);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--color-primary);
 }
 
 p {
@@ -180,6 +186,21 @@ a {
 img {
     max-width: 100%;
     height: auto;
+}
+
+.container-views .cell-custom-right {
+    padding: 40px;
+    background: var(--color-light-bg);
+    /* border-left: 1px solid var(--color-gray-light); */
+}
+
+.grid-x-grid {
+    display: grid;
+}
+
+.container-views .grid-x-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
 }
 
 .container-outter,

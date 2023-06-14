@@ -8,7 +8,6 @@
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
-
     <h1>DASHBOARD.PHP</h1>
 
     <a href="<?php echo $relative_directory; ?>/logout.php">logout</a>
