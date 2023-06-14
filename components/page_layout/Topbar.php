@@ -27,7 +27,7 @@
 
             <div class="darkmode-section">
                 <label class="switch">
-                    <input type="checkbox" id="darkModeSwitch">
+                    <input type="checkbox" id="darkModeSwitch" <?php if($user->getDarkModePreference($_SESSION["user"]["id"]) == '1') echo 'class="checked-input" checked'; ?>>
                     <span class="slider-custom round">
                         <i class="fa fa-moon"></i>
                         <i class="fa fa-sun"></i>

@@ -72,4 +72,27 @@
             // *** Destroy the session
             session_destroy();
         }
+
+        public function getDarkModePreference($user_id) {
+            $query = "SELECT darkmode FROM users WHERE id = $user_id";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res && $query_res->num_rows > 0) {
+                $row = $query_res->fetch_assoc();
+                return $row["darkmode"];
+            }
+
+            return 0;
+        }
+
+        public function updateDarkModePreference($user_id, $darkmode) {
+            $query = "UPDATE users SET darkmode = $darkmode WHERE id = $user_id";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res === false) {
+                return "ERROR_DARKMODE";
+            } else {
+                return "SUCCESS_DARKMODE";
+            }
+        }
     }
