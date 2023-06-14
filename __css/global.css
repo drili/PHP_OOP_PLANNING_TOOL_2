@@ -3,7 +3,6 @@
 ------------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-
 :root {
     --font-size-h1-mobile: 30px;
     --font-size-h2-mobile: 20px;
@@ -24,11 +23,13 @@
     --font-size-h6-desktop: 16px;
     --font-size-p-desktop: 16px;
     --font-size-a-desktop: 16px;
+    --font-size-small: 12px;
 
     --line-height-desktop: 1.6;
 
     --font-family: Arial, sans-serif;
     --font-weight-bold: bold;
+    --font-weight-600: 600;
     --font-weight-normal: normal;
 
     --font-family: 'Inter', sans-serif;
@@ -50,11 +51,14 @@
     --color-red: #c0392b;
     --color-red-light: #ffc0ba;
 
-    --border-radius: 10px;
+    --border-radius: 20px;
+    --border-radius-small: 10px;
     --cubic-bezier: cubic-bezier(.95,.34,.25,1.01);
     --box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 
     --section-mb: 60px;
+    --section-mb-inner: 40px;
+    --section-mb-inner-mobile: 20px;
     --flex-gap: 30px;
 }
 
@@ -102,14 +106,16 @@ p {
     font-size: var(--font-size-p-desktop);
     line-height: var(--line-height-desktop);
     font-weight: var(--font-weight-normal);
+    color: var(--color-primary-light);
 }
 
 a {
     font-size: var(--font-size-a-desktop);
     line-height: var(--line-height-desktop);
-    font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-600);
     text-decoration: none;
-    color: #007bff;
+    color: var(--color-primary);
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 990px) {
@@ -179,4 +185,68 @@ img {
 .container-outter,
 .container-custom {
     height: 100%;
+}
+
+.section-mb {
+    margin-bottom: var(--section-mb-inner);
+}
+
+.container-boxed {
+    padding: 20px;
+}
+
+img {
+    border-radius: var(--border-radius);
+}
+
+.btn {
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 15px 40px;
+    font-size: var(--font-size-a-desktop);
+}
+.btn.btn-full {
+    width: 100%;
+    text-align: center;
+}
+.btn.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+input {
+    border: 1px solid var(--color-gray) !important;
+    padding: 20px !important;
+    border-radius: var(--border-radius-small) !important;
+    font-size: var(--font-size-a-desktop) !important;
+    margin-bottom: 20px !important;
+    box-shadow: none !important;
+}
+
+form button {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+::placeholder { 
+    color: var(--color-primary-light);
+}
+:-ms-input-placeholder { 
+    color: var(--color-primary-light);
+}
+::-webkit-input-placeholder {
+    color: var(--color-primary-light);
+}
+*:focus {
+    outline: 1px solid var(--color-primary) !important;
+}
+
+hr {
+    border-bottom: 1px solid var(--color-gray) !important;
+}
+
+@media screen and (max-width: 990px) {
+    .section-mb {
+        margin-bottom: var(--section-mb-inner-mobile);
+    }
 }
