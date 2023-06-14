@@ -62,4 +62,4 @@
         <link rel="stylesheet" type="text/css" href="<?php echo $relative_directory; ?>/__css/global.css">
     </head>
     
-        <body <?php if($user->getDarkModePreference($_SESSION["user"]["id"]) == '1') echo 'class="dark-mode"'; ?>>
+        <body <?php if(isset($_SESSION["user"])) { if($user->getDarkModePreference($_SESSION["user"]["id"]) == '1') echo 'class="dark-mode"'; } ?>>
