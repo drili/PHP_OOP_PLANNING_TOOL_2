@@ -7,25 +7,13 @@
     require $current_directory . "/../parts/header.php";
 ?>
 
-<div class="container-outter">
-    <div class="container-custom">
+<?php require $current_directory . "/../parts/views_layout_top.php"; ?>
 
-        <div class="grid-container-fluid">
-            <div class="grid-x">
+    <h1>DASHBOARD.PHP</h1>
 
-                <div class="cell cell-main small-12">
-                    <div class="cell-inner">
-                        <h1>DASHBOARD.PHP</h1>
+    <a href="<?php echo $relative_directory; ?>/logout.php">logout</a>
 
-                        <a href="<?php echo $relative_directory; ?>/logout.php">logout</a>
-                    </div>
-                </div> <!-- .cell-main -->
-
-            </div>
-        </div> <!-- .grid-container -->
-
-    </div>
-</div> <!-- .container-outter -->
+<?php require $current_directory . "/../parts/views_layout_bottom.php"; ?>
 
 <?php
     // *** Include footer.php
