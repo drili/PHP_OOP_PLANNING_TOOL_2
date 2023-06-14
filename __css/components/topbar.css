@@ -1,0 +1,138 @@
+.topbar {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.component-topbar {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-small);
+    padding: 20px 40px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 40px;
+}
+
+.component-topbar * {
+    margin-bottom: 0;
+}
+
+.component-topbar input {
+    margin-bottom: 0 !important;
+}
+
+.component-topbar .topbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.component-topbar #searchForm {
+    display: flex;
+    align-items: center;
+}
+
+.component-topbar #searchForm input {
+    margin-right: 20px;
+}
+
+.component-topbar #searchForm i {
+    color: var(--color-primary-light) !important;
+}
+
+.component-topbar .topbar-content-inner {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.component-topbar .buttons-section {
+    display: flex;
+    gap: 1rem;
+}
+
+/*------------------------------------------------------------------
+// Darkmode Switcher
+------------------------------------------------------------------*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 44px;
+}
+
+.slider-custom {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-blue-light);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider-custom:before {
+    position: absolute;
+    content: "";
+    height: 36px;
+    width: 36px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--color-white);
+    -webkit-transition: .4s;
+    transition: .4s;
+    z-index: 1;
+}
+
+input:checked+.slider-custom {
+    background-color: var(--color-blue-light)
+}
+
+input:focus+.slider-custom {
+    /* box-shadow: 0 0 1px #2196F3; */
+}
+
+input:checked+.slider-custom:before {
+    -webkit-transform: translateX(36px);
+    -ms-transform: translateX(36px);
+    transform: translateX(36px);
+}
+
+.slider-custom.round {
+    border-radius: 34px;
+}
+
+.slider-custom.round:before {
+    border-radius: 50%;
+}
+
+.slider-custom.round {
+    font-size: 18px;
+    line-height: 36px;
+}
+
+.slider-custom.round svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    color: var(--color-blue);
+}
+
+.slider-custom svg.fa-moon {
+    left: 10px;
+}
+
+.slider-custom svg.fa-sun{
+    right: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}

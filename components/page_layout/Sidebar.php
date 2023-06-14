@@ -9,20 +9,20 @@
     <div class="sidebar-main-content sidebar-section">
         <h6>Main Tools</h6>
         <div class="link-section">
-            <a href="#" class="link-active"><span class="icon"><i class="gg-ghost"></i></span> Dashboard</a>
-            <a href="#"><span class="icon"><i class="gg-display-spacing"></i></span> Workflow</a>
-            <a href="#"><span class="icon"><i class="gg-calendar-today"></i></span> Sprint Overview</a>
-            <a href="#"><span class="icon"><i class="gg-sand-clock"></i></span> Time Registrations</a>
-            <a href="#"><span class="icon"><i class="gg-user-list"></i></span> Customers</a>
+            <a href="#" class="link-active"><span class="icon"><i class="fa fa-dashboard"></i></span> Dashboard</a>
+            <a href="#"><span class="icon"><i class="fa fa-columns"></i></span> Workflow</a>
+            <a href="#"><span class="icon"><i class="fa fa-calendar"></i></span> Sprint Overview</a>
+            <a href="#"><span class="icon"><i class="fa fa-clock"></i></span> Time Registrations</a>
+            <a href="#"><span class="icon"><i class="fa fa-users"></i></span> Customers</a>
         </div>
     </div>
 
     <div class="sidebar-secondary-content sidebar-section">
         <h6>Misc</h6>
         <div class="link-section">
-            <a href="#"><span class="icon"><i class="gg-band-aid"></i></span> Campaign Planner</a>
-            <a href="#"><span class="icon"><i class="gg-band-aid"></i></span> Client Health</a>
-            <a href="#"><span class="icon"><i class="gg-band-aid"></i></span> Team Health</a>
+            <a href="#"><span class="icon"><i class="fa fa-plus"></i></span> Campaign Planner</a>
+            <a href="#"><span class="icon"><i class="fa fa-plus"></i></span> Client Health</a>
+            <a href="#"><span class="icon"><i class="fa fa-plus"></i></span> Team Health</a>
         </div>
     </div>
 

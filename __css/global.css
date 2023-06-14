@@ -39,7 +39,8 @@
     --color-primary-light: #686f79;
     --color-white: #fff;
     --color-black: #000;
-    --color-light-bg: #f1f3f4;
+    --color-light-bg: #fcfbfc;
+    --color-light-global: #f1f3f4;
     --color-gray: #e4e9ea;
     --color-gray-light: #cbcdd1;
     --color-font-light: #b8bec0;
@@ -64,6 +65,17 @@
     --flex-gap: 30px;
 }
 
+.dark-mode {
+    --color-primary: #fff37a;
+    --color-primary-light: #686f79;
+    --color-white: #363538;
+    --color-black: #000;
+    --color-light-bg: #242529;
+    --color-light-global: #f1f3f4;
+    --color-gray: #37393f;
+    --color-gray-light: #cbcdd1;
+    --color-font-light: #b8bec0;
+}
 
 /*------------------------------------------------------------------
 // Headings
@@ -220,11 +232,23 @@ img {
     border-radius: var(--border-radius);
 }
 
+button, a {
+    cursor: pointer;
+}
+
 .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
     border: none;
     border-radius: var(--border-radius);
     padding: 15px 40px;
     font-size: var(--font-size-a-desktop);
+}
+.btn-small {
+    max-height: 44px;
 }
 .btn.btn-full {
     width: 100%;
@@ -234,14 +258,19 @@ img {
     background: var(--color-primary);
     color: var(--color-white);
 }
+.btn.btn-secondary {
+    background-color: var(--color-gray);
+}
 
 input {
-    border: 1px solid var(--color-gray) !important;
+    /* border: 1px solid var(--color-gray) !important; */
+    border: none !important;
     padding: 20px !important;
     border-radius: var(--border-radius-small) !important;
     font-size: var(--font-size-a-desktop) !important;
     margin-bottom: 20px !important;
     box-shadow: none !important;
+    background-color: var(--color-light-global) !important;
 }
 
 form button {
