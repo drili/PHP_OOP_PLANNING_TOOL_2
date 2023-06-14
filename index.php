@@ -28,6 +28,9 @@
                                 <input type="password" name="password" placeholder="Password" required>
                                 <button type="submit" class="btn btn-primary btn-full">Login</button>
                             </form>
+
+                            <div class="form-message">
+                            </div>
                         </div>
 
                         <div class="misc">

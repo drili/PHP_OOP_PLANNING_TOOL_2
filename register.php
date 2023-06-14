@@ -5,29 +5,15 @@
 
     // *** Include header.php & files
     require $current_directory . "/parts/header.php";
-
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $register_result = $user->register($username, $email, $password);
-
-        if ($register_result === "SUCCESS_USER_CREATED") {
-            echo $register_result;
-        } else {
-            echo $register_result;
-        }
-    }
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo $relative_directory; ?>/__css/pages/page_register.css">
 
-<div class="container-outter container-boxed container-index">
+<div class="container-outter container-boxed container-register">
     <div class="container-custom">
 
         <div class="grid-container-fluid">
-            <div class="grid-x grid-x-index">
+            <div class="grid-x grid-x-register">
 
                 <div class="cell cell-main small-12 large-3 large-offset-1">
                     <div class="cell-inner">
@@ -37,12 +23,15 @@
                         </div>
 
                         <div class="box-register">
-                            <form method="POST" action="">
+                            <form method="POST" action="" id="registerForm">
                                 <input type="text" name="username" placeholder="Username" required>
                                 <input type="email" name="email" placeholder="Email" required>
                                 <input type="password" name="password" placeholder="Password" required>
                                 <button type="submit" class="btn btn-primary btn-full">Register</button>
                             </form>
+
+                            <div class="form-message">
+                            </div>
                         </div>
 
                         <div class="misc">
@@ -75,3 +64,5 @@
     // *** Include footer.php
     require_once $current_directory . '/parts/footer.php';
 ?>
+
+<script src="__js/pages/register/index.js"></script>

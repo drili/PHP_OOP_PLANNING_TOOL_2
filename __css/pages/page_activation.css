@@ -1,0 +1,31 @@
+.container-activation .cell-main img {
+    height: calc(100vh - 40px);
+    object-fit: cover;
+    width: 100%;
+}
+
+.container-activation .grid-x-activation {
+    align-items: center;
+}
+
+.link-section {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.div-logo {
+    position: absolute;
+    left: 80px;
+    bottom: 80px;
+}
+.div-logo i {
+    color: var(--color-primary);
+    transform: scale(4);
+}
+
+@media screen and (max-width: 990px) {
+    .container-activation .cell-main img {
+        height: 50vh;
+        object-fit: cover;
+    }
+}

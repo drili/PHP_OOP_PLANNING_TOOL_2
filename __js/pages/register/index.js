@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
 
-    loginForm.addEventListener("submit", function(event) {
+    registerForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        var formData = new FormData(loginForm);
+        var formData = new FormData(registerForm);
 
-        fetch("AJAX/login/AJAX_POST_login.php", {
+        fetch("AJAX/register/AJAX_POST_register.php", {
             method: "POST",
             body: formData
         })
@@ -19,14 +19,14 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(function(response) {
                 console.log({ response });
+                const errorSection = document.querySelector(".form-message");
 
-                if (response["response_status"] === "SUCCESS_LOGIN") {
-                    window.location.href = "./views/dashboard.php";
-                } else {
-                    const errorSection = document.querySelector(".form-message");
-                    const errorResponse = response["response_status"];
+                if (response["response_status"] === "SUCCESS_USER_CREATED") {
                     errorSection.innerHTML = "";
-                    errorSection.innerHTML = `<div class="form-error-custom"><section><p>Your username or password was incorrect, please try again.</p></section></div>`;
+                    errorSection.innerHTML = `<div class="form-success-custom"><section><p>Your account has now been created successfully!</p></section></div>`;
+                } else {
+                    errorSection.innerHTML = "";
+                    errorSection.innerHTML = `<div class="form-error-custom"><section><p>There was an error creating your account, please try again.</p></section></div>`;
                 }
             })
             .catch(function(error) {

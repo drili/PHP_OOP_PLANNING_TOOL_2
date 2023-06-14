@@ -20,13 +20,7 @@
             $result = $this->db->conn->query($query);
 
             if ($result) {
-                // *** Insert into "darkmode" table
-                $query_insert = "INSERT INTO darkmode (user_email) VALUES ('$email')";
-                $query_insert_res = $this->db->conn->query($query_insert);
-
-                if ($query_insert_res) {
-                    return "SUCCESS_USER_CREATED";
-                }
+                return "SUCCESS_USER_CREATED";
             } else {
                 return "ERROR_USER_CREATED";
             }

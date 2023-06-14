@@ -46,8 +46,8 @@
     --color-purple-light: #e6e0eb;
     --color-blue: #4f8594;
     --color-blue-light: #e7f4f7;
-    --color-green: #e7f4f7;
-    --color-green-light: #e7f4f7;
+    --color-green: #2ecc71;
+    --color-green-light: #c6ffde;
     --color-red: #c0392b;
     --color-red-light: #ffc0ba;
 
@@ -226,6 +226,31 @@ input {
 form button {
     margin-top: 20px;
     margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.form-message * {
+    font-size: var(--font-size-small);
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.form-message section{
+    padding: 15px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+.form-message .form-error-custom section {
+    background-color: var(--color-red-light);
+}
+.form-message .form-error-custom p {
+    color: var(--color-red);
+}
+.form-message .form-success-custom section {
+    background-color: var(--color-green-light);
+}
+.form-message .form-success-custom p {
+    color: var(--color-green);
 }
 
 ::placeholder { 
