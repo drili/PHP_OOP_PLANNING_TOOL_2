@@ -21,8 +21,8 @@ DATABASE=""
 
 
 ### Task list
-- [] Add user registration & login
-- [] Add user authentication
+- [x] Add user registration & login
+- [x] Add user authentication
     - User is not activated after registration
     - User must be activated after registration
 - [] Add user roles & auth control
