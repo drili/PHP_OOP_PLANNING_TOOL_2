@@ -9,7 +9,7 @@
     <div class="sidebar-main-content sidebar-section">
         <h6>Main Tools</h6>
         <div class="link-section">
-            <a href="#" class="link-active"><span class="icon"><i class="fa fa-dashboard"></i></span> Dashboard</a>
+            <a href="<?php echo $relative_directory; ?>/views/dashboard.php" class="link-active"><span class="icon"><i class="fa fa-dashboard"></i></span> Dashboard</a>
             <a href="#"><span class="icon"><i class="fa fa-columns"></i></span> Workflow</a>
             <a href="#"><span class="icon"><i class="fa fa-calendar"></i></span> Sprint Overview</a>
             <a href="#"><span class="icon"><i class="fa fa-clock"></i></span> Time Registrations</a>
@@ -29,8 +29,15 @@
     <div class="sidebar-profile sidebar-section">
         <div class="sidebar-profile-inner">
             <img src="<?php echo $relative_directory; ?>/assets/images/user/default-profile.jpg" alt="">
-            <h5><?php echo $_SESSION['user']["username"]; ?></h5>
+            <div class="profile-settings">
+                <h5><?php echo $_SESSION['user']["username"]; ?></h5>
+            </div>
             <p><?php echo $_SESSION['user']["email"]; ?></p>
+            <hr>
+            <div class="profile-settings-content">
+                <a href="<?php echo $relative_directory; ?>/views/profile-page.php">Edit Profile</a>
+                <a href="<?php echo $relative_directory; ?>/logout.php">Logout</a>
+            </div>
         </div>
     </div>
 </div>

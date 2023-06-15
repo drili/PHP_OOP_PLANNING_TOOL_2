@@ -8,7 +8,7 @@
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
-    <h1>DASHBOARD.PHP</h1>
+    <h1>PROFILE-PAGE.PHP</h1>
 <?php require $current_directory . "/../parts/views_layout_bottom.php"; ?>
 
 <?php

@@ -80,3 +80,11 @@
     object-position: center;
     margin-bottom: 20px;
 }
+
+.component-sidebar .profile-settings-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    margin-top: 5px;
+}
