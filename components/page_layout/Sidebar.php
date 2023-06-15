@@ -10,10 +10,10 @@
         <h6>Main Tools</h6>
         <div class="link-section">
             <a href="<?php echo $relative_directory; ?>/views/dashboard.php" class="link-active"><span class="icon"><i class="fa fa-dashboard"></i></span> Dashboard</a>
-            <a href="#"><span class="icon"><i class="fa fa-columns"></i></span> Workflow</a>
-            <a href="#"><span class="icon"><i class="fa fa-calendar"></i></span> Sprint Overview</a>
-            <a href="#"><span class="icon"><i class="fa fa-clock"></i></span> Time Registrations</a>
-            <a href="#"><span class="icon"><i class="fa fa-users"></i></span> Customers</a>
+            <a href="<?php echo $relative_directory; ?>/views/workflow.php"><span class="icon"><i class="fa fa-columns"></i></span> Workflow</a>
+            <a href="<?php echo $relative_directory; ?>/views/sprint-overview.php"><span class="icon"><i class="fa fa-calendar"></i></span> Sprint Overview</a>
+            <a href="<?php echo $relative_directory; ?>/views/time-registrations.php"><span class="icon"><i class="fa fa-clock"></i></span> Time Registrations</a>
+            <a href="<?php echo $relative_directory; ?>/views/customers.php"><span class="icon"><i class="fa fa-users"></i></span> Customers</a>
         </div>
     </div>
 
