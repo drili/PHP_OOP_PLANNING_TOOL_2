@@ -20,7 +20,7 @@
                     Register Offtime <i class="fa fa-calendar-check"></i>
                 </a>
 
-                <a href="#" class="btn btn-small btn-primary">
+                <a href="<?php echo $relative_directory; ?>/views/create-task.php" class="btn btn-small btn-primary">
                     Create Task <i class="fa fa-plus"></i>
                 </a>
             </div>

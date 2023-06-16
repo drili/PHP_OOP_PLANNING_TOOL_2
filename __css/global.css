@@ -284,7 +284,6 @@ form button {
     margin-bottom: 0;
     font-weight: bold;
 }
-
 .form-message section{
     padding: 15px;
     border-radius: var(--border-radius);
@@ -301,6 +300,14 @@ form button {
 }
 .form-message .form-success-custom p {
     color: var(--color-green);
+}
+
+.boxed-section {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-small);
+    padding: 20px 40px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 40px;
 }
 
 ::placeholder { 
@@ -324,4 +331,34 @@ hr {
     .section-mb {
         margin-bottom: var(--section-mb-inner-mobile);
     }
+}
+
+/*------------------------------------------------------------------
+// Page Layout
+------------------------------------------------------------------*/
+.grid-page-title {
+    margin-bottom: 40px;
+}
+
+/*------------------------------------------------------------------
+// Quill
+------------------------------------------------------------------*/
+.quill-box {
+    display: grid;
+}
+.quill-box .ql-toolbar {
+    border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
+}
+.quill-box .quill-text-area {
+    border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+}
+.quill-box * {
+    margin: 0;
+}
+
+/*------------------------------------------------------------------
+// Select2
+------------------------------------------------------------------*/
+.select2-selection.select2-selection--multiple {
+    
 }
