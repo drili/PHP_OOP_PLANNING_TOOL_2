@@ -272,6 +272,16 @@ input {
     box-shadow: none !important;
     background-color: var(--color-light-global) !important;
 }
+select {
+    border: none !important;
+    padding-top: 10px !important;
+    padding-left: 20px;
+    font-size: var(--font-size-a-desktop) !important;
+    border-radius: var(--border-radius-small) !important;
+    background-color: var(--color-light-global) !important;
+    box-shadow: none !important;
+    margin-bottom: 20px !important;
+}
 
 form button {
     margin-top: 20px;
@@ -345,6 +355,11 @@ hr {
 ------------------------------------------------------------------*/
 .quill-box {
     display: grid;
+    margin-bottom: 20px;
+}
+.quill-box * {
+    background-color: var(--color-light-global) !important;
+    border: none !important;
 }
 .quill-box .ql-toolbar {
     border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
@@ -359,6 +374,28 @@ hr {
 /*------------------------------------------------------------------
 // Select2
 ------------------------------------------------------------------*/
+.multi-select-box {
+    margin-bottom: 20px;
+}
 .select2-selection.select2-selection--multiple {
-    
+    /* margin-bottom: 20px; */
+    background-color: var(--color-light-global) !important;
+    border: none !important;
+    border-radius: var(--border-radius-small) !important;
+}
+.select2-selection.select2-selection--multiple .select2-selection__choice__remove {
+    margin: 0;
+    margin-top: 2px;
+}
+.select2-selection.select2-selection--multiple .select2-selection__choice {
+    background-color: var(--color-gray) !important;
+}
+.select2-selection.select2-selection--multiple .select2-selection__choice__display {
+    font-size: var(--font-size-a-desktop) !important;
+}
+.select2-search.select2-search--inline textarea {
+    display: none !important;
+}
+.select2-results__option.select2-results__option--selectable {
+    font-size: var(--font-size-a-desktop) !important;
 }

@@ -20,7 +20,7 @@
 
     <?php
         $cell_size = "8";
-        echo FormCreateTask($cell_size);
+        echo FormCreateTask($cell_size, $relative_directory, $db);
     ?>
     
 <?php require $current_directory . "/../parts/views_layout_bottom.php"; ?>

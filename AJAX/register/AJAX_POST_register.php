@@ -7,9 +7,7 @@
 
     // *** Include header.php & Classes
     require $current_directory . "/" . "../../parts/header_pre.php";
-
-    // $email = mysqli_real_escape_string($db->conn, $_POST['email']);
-    // $password = mysqli_real_escape_string($db->conn, $_POST['password']);
+    
     $email = $_POST['email'];
     $password = $_POST['password'];
     $username = $_POST["username"];
