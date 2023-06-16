@@ -61,6 +61,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo $relative_directory; ?>/__css/reset.css">
         <link rel="stylesheet" type="text/css" href="<?php echo $relative_directory; ?>/__css/global.css">
 
+        <!-- *** Global Header JS -->
+        
+
         <!-- *** Main Quill library -->
         <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
         <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>

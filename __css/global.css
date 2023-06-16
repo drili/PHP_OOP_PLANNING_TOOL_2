@@ -399,3 +399,17 @@ hr {
 .select2-results__option.select2-results__option--selectable {
     font-size: var(--font-size-a-desktop) !important;
 }
+
+/*------------------------------------------------------------------
+// Custom Loader
+------------------------------------------------------------------*/
+.custom-loader {
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.custom-loader i {
+    transform: scale(var(--ggs,2)) !important;
+}

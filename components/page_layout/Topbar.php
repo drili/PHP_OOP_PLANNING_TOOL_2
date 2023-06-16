@@ -38,4 +38,4 @@
     </div>
 </div>
 
-<script src="<?php echo $relative_directory; ?>/__js/components/topbar.js"></script>
+<script src="<?php echo $relative_directory; ?>/__js/components/Topbar.js"></script>

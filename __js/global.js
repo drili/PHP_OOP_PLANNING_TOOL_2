@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     $('.js-example-basic-multiple').select2({
         width: "100%"
     });
-
+    
     // *** Sidebar active link checker
     (function sideBarActiveLink() {
         var currentPageUrl = window.location.href;
