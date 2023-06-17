@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-content">
-                    <form action="">
+                    <form action="" id="FormCreateTask">
                         <div class="grid-container-fluid component-form-create-task">
                             <div class="grid-x grid-margin-x grid-x-component">
                                 
@@ -40,8 +40,8 @@
                                 </div>
 
                                 <div class="cell small-12 large-3">
-                                    <label for="task_now">Task Low</label>
-                                    <input type="number" min="1" placeholder="1" name="task_now" required>
+                                    <label for="task_low">Task Low</label>
+                                    <input type="number" min="1" placeholder="1" name="task_low" required>
                                 </div>
 
                                 <div class="cell small-12 large-3">
@@ -58,8 +58,8 @@
                                 </div>
 
                                 <div class="cell small-12 large-4">
-                                    <label for="customers">Customers</label>
-                                    <select name="" id="customers" required>
+                                    <label for="customer">Customer</label>
+                                    <select name="customer" id="customer" required>
                                         <option disabled="" selected="" value="">Select Customer</option>
                                         <?php foreach($all_customers as $ac) : ?>
                                             <option value="<?php echo $ac["customer_id"]; ?>">
@@ -72,7 +72,7 @@
 
                                 <div class="cell small-12 large-4">
                                     <label for="task_label">Task Label</label>
-                                    <select name="" id="task_label" name="task_label">
+                                    <select name="task_label" id="task_label" name="task_label">
                                         <option disabled="" selected="" value="">Select Label</option>
                                         <?php foreach($sprint_labels as $sl) : ?>
                                             <option value="<?php echo $sl["label_id"]; ?>" style="background-color:<?php echo $sl["label_color"]; ?>">
@@ -84,7 +84,7 @@
 
                                 <div class="cell small-12 large-4">
                                     <label for="task_vertical">Task Vertical</label>
-                                    <select name="" id="task_vertical" name="task_vertical" required>
+                                    <select name="task_vertical" id="task_vertical" name="task_vertical" required>
                                         <option disabled="" selected="" value="">Select Vertical</option>
                                         <?php foreach($task_verticals as $tv) : ?>
                                             <option value="<?php echo $tv["task_vertical_id"]; ?>">
@@ -97,7 +97,7 @@
                                 <div class="cell small-12">
                                     <label for="task_sprint">Sprint(s)</label>
                                     <div class="multi-select-box">
-                                        <select data-placeholder="Choose sprint(s)" multiple class="js-example-basic-multiple">
+                                        <select name="task_sprints[]" data-placeholder="Choose sprint(s)" multiple class="js-example-basic-multiple">
                                             <?php $valid_sprints_i = 0; ?>
                                             <?php foreach($valid_sprints as $vs) : ?>
                                                 <option 
@@ -113,9 +113,9 @@
                                 </div>
 
                                 <div class="cell small-12">
-                                    <label for="task_person">Person(s)</label>
+                                    <label for="task_persons">Person(s)</label>
                                     <div class="multi-select-box">
-                                        <select data-placeholder="Choose person(s)" multiple class="js-example-basic-multiple" required>
+                                        <select name="task_persons[]" data-placeholder="Choose person(s)" multiple class="js-example-basic-multiple" required>
                                             <?php foreach($all_persons as $ap) : ?>
                                                 <option value="<?php echo $ap["id"]; ?>">
                                                     <?php echo $ap["username"]; ?>
@@ -127,7 +127,7 @@
 
                                 <div class="cell small-12">
                                     <div class="buttons">
-                                        <button class="btn btn-primary">Create Task</button>
+                                        <button class="btn btn-primary btn-create-task">Create Task</button>
                                         <button class="btn btn-secondary">Create Task - Keep settings</button>
                                     </div>
                                 </div>
@@ -147,3 +147,14 @@
         return $FormCreateTask;
     }
 ?>
+
+<script src="<?php echo $relative_directory; ?>/__js/events/create-task.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnCreateTask = document.querySelector(".btn-create-task");
+        btnCreateTask.addEventListener("click", function(e) {
+            var event__CreateTask = new Event("CreateTask");
+            document.dispatchEvent(event__CreateTask);
+        })
+    })
+</script>
