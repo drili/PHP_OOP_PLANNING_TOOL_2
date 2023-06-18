@@ -14,6 +14,7 @@
         public $task_vertical_id;
         public $user_id;
         public $task_persons;
+        public $task_id;
 
 
         public function __construct($db) {
@@ -82,7 +83,41 @@
         }
 
         public function fetchTask() {
-            
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
+
+            $query = "SELECT 
+            tasks.*, 
+            sprints.*,
+            customers.*,
+            task_verticals.*,
+            task_labels.*,
+            GROUP_CONCAT(tasks_persons.person_id) as persons_ids
+            FROM tasks
+            LEFT JOIN sprints ON tasks.sprint_id = sprints.sprint_id
+            LEFT JOIN tasks_persons ON tasks.task_id = tasks_persons.task_id
+            LEFT JOIN customers ON tasks.customer_id = customers.customer_id
+            LEFT JOIN task_verticals ON tasks.task_vertical_id = task_verticals.task_vertical_id
+            LEFT JOIN task_labels ON tasks.label_id = task_labels.label_id
+            WHERE tasks.task_id = '".$task_id."'
+            GROUP BY tasks.task_id";
+            // $query = "SELECT *
+            // FROM tasks
+            // LEFT JOIN sprints ON tasks.sprint_id = sprints.sprint_id
+            // LEFT JOIN tasks_persons ON tasks.task_id = tasks_persons.task_id
+            // WHERE tasks.task_id = '".$task_id."'";
+
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res->num_rows > 0) {
+                $task_array = array();
+                while ($row = $query_res->fetch_assoc()) {
+                    $task_array[] = $row;
+                }
+
+                return $task_array;
+            } else {
+                return "ERR_FETCHING_TASK";
+            }
         }
 
         public function fetchLatestTasksByUser($user_id) {

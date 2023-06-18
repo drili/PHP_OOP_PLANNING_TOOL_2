@@ -44,4 +44,26 @@ document.addEventListener("DOMContentLoaded", function() {
             hideAfter: 3500
         })
     }
+
+    // *** Global event dispatches
+    // *** Click task modal
+    function eventDispatchClickTask() {
+        document.addEventListener("click", function(event) {
+          const clickedElement = event.target.closest(".task-single");
+          
+          if (clickedElement) {
+            event.preventDefault();
+            
+            const dataTaskId = clickedElement.getAttribute("data-task-id");
+            var taskModalEventData = new CustomEvent("TaskModal", {
+                "detail": {
+                    "dataTaskId": dataTaskId
+                }
+            });
+            document.dispatchEvent(taskModalEventData);
+          }
+        });
+      }
+      
+      eventDispatchClickTask();
 })

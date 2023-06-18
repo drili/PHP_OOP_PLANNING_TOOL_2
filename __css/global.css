@@ -416,3 +416,13 @@ hr {
 .custom-loader i {
     transform: scale(var(--ggs,2)) !important;
 }
+
+/*------------------------------------------------------------------
+// jQuery Modal
+------------------------------------------------------------------*/
+.jquery-modal .modal {
+    min-width: 80vw;
+    min-height: 80vh;
+    border-radius: var(--border-radius) !important;
+    background-color: var(--color-light-bg) !important;
+}
