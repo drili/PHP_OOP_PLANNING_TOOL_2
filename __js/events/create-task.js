@@ -1,10 +1,30 @@
 (function() {
     var isEventListenerAdded = false;
 
+    function clearForm() {
+        const formClear = document.getElementById("FormCreateTask");
+        const formElements = formClear.elements;
+
+        for (let i = 0; i < formElements.length; i++) {
+            const formElement = formElements[i];
+
+            if (formElement.tagName === 'INPUT' || formElement.tagName === 'SELECT' || formElement.tagName === 'TEXTAREA') {
+                formElement.value = '';
+            }
+        }
+
+        const qlEditor = document.querySelector(".ql-editor");
+        qlEditor.innerHTML = "";
+
+        const multiSelect = $('.js-example-basic-multiple');
+        multiSelect.val(null).trigger('change');
+    }
     document.addEventListener("CreateTask", function(event) {
         if (isEventListenerAdded) {
             return;
         }
+
+        const clickValue = event.detail.value;
 
         const form = document.getElementById("FormCreateTask");
 
@@ -29,14 +49,23 @@
             })
             .then(function(data) {
                 console.log({ data });
+                if (data.query_status === "SUCCESS_TASK_CREATED") {
+                    toastMessageSuccess("Success!", "Task has been created successfully");
+                    var event__RecentTasksCreated = new Event("RecentTasksCreated");
+                    document.dispatchEvent(event__RecentTasksCreated);
+
+                    if (clickValue == "btn-create-task") {
+                        clearForm();
+                    }
+                } else if (data.query_status === "ERR_CREATING_TASK_TIME") {
+                    toastMessageError("Error!", "Task low cannot be higher than task high");
+                } else {
+                    toastMessageError("Error!", "There was an error creating task");
+                }
             })
             .catch(function(error) {
                 console.log("::: ERROR: AJAX_POST_create-task: " + error.message);
             });
-
-            // formData.forEach(function(key, value) {
-            //     console.log(`key: ${key} | value: ${value}`);
-            // })
         }
 
         form.removeEventListener("submit", handleFormSubmit);

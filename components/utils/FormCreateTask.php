@@ -128,7 +128,7 @@
                                 <div class="cell small-12">
                                     <div class="buttons">
                                         <button class="btn btn-primary btn-create-task">Create Task</button>
-                                        <button class="btn btn-secondary">Create Task - Keep settings</button>
+                                        <button class="btn btn-secondary btn-create-task-wsettings">Create Task - Keep settings</button>
                                     </div>
                                 </div>
 
@@ -153,7 +153,13 @@
     document.addEventListener("DOMContentLoaded", function() {
         const btnCreateTask = document.querySelector(".btn-create-task");
         btnCreateTask.addEventListener("click", function(e) {
-            var event__CreateTask = new Event("CreateTask");
+            var event__CreateTask = new CustomEvent("CreateTask", { detail: { value: "btn-create-task" } });
+            document.dispatchEvent(event__CreateTask);
+        })
+
+        const btnCreateTaskWSettings = document.querySelector(".btn-create-task-wsettings");
+        btnCreateTaskWSettings.addEventListener("click", function(e) {
+            var event__CreateTask = new CustomEvent("CreateTask", { detail: { value: "btn-create-task-wsettings" } });
             document.dispatchEvent(event__CreateTask);
         })
     })

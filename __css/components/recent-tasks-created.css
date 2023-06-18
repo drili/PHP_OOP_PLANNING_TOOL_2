@@ -1,0 +1,34 @@
+.RecentTasksCreated .task-single {
+    background: var(--color-gray);
+    padding: 20px;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+}
+.RecentTasksCreated .task-single * {
+    margin: 0;
+}
+.RecentTasksCreated .task-single .task-date {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 10px;
+
+}
+.RecentTasksCreated .task-single .task-date * {
+    color: var(--color-primary-light);
+    font-size: var(--font-size-small);
+}
+.RecentTasksCreated .task-single .customer {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-purple-light);
+    margin-bottom: 10px;
+}
+.RecentTasksCreated .task-single .customer p {
+    color: var(--color-purple);
+    font-size: var(--font-size-small);
+    font-weight: bold;
+}
