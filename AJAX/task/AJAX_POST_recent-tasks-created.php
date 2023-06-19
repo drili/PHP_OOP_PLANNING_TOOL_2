@@ -19,8 +19,8 @@
 <?php if ($response["query_status"] !== "ERR_FETCHING_TASKS_BY_USER") : ?>
     <?php foreach($response["query_status"] as $value) : ?>
         <div class="task-single task-fetched-single task-fetched-<?php echo $value["task_id"]; ?>" data-task-id="<?php echo $value["task_id"]; ?>">
-            <div class="customer">
-                <p>Customer</p>
+            <div class="customer" style="background-color:<?php echo $value["customer_color"]; ?>;">
+                <p style="color:<?php echo $value["customer_color"]; ?>;filter: contrast(0.1);"><?php echo $value["customer_name"]; ?></p>
             </div>
             <div class="title">
                 <h6><?php echo $value["task_name"]; ?></h6>

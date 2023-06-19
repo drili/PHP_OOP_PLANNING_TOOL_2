@@ -6,7 +6,7 @@
     ?>
         <div class="cell small-12 large-<?php echo $cell_size; ?> component-recent-tasks-created">
 
-            <div class="boxed-section">
+            <div class="boxed-section boxed-section-gray">
                 <div class="title">
                     <h4>Recently Created Tasks</h4>
                     <p>Tasks recently created <b><?php echo $_SESSION["user"]["username"]; ?></b></p>

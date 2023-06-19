@@ -1,10 +1,10 @@
 .RecentTasksCreated .task-single {
-    background: var(--color-gray);
+    background: var(--color-white);
     padding: 20px;
     border-radius: var(--border-radius-small);
     cursor: pointer;
     margin-bottom: 20px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-outline-hard);
 }
 .RecentTasksCreated .task-single * {
     margin: 0;

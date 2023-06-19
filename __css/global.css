@@ -61,6 +61,9 @@
     --border-radius-small: 10px;
     --cubic-bezier: cubic-bezier(.95,.34,.25,1.01);
     --box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    --box-shadow-hard: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    --box-shadow-outline: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    --box-shadow-outline-hard: rgba(0, 0, 0, 0.015) 0px 6px 24px 0px, rgba(0, 0, 0, 0.045) 0px 0px 0px 1px;
 
     --section-mb: 60px;
     --section-mb-inner: 40px;
@@ -322,6 +325,9 @@ form button {
     box-shadow: var(--box-shadow);
     margin-bottom: 40px;
 }
+.boxed-section-gray {
+    background-color: var(--color-light-global);
+}
 
 ::placeholder { 
     color: var(--color-primary-light);
@@ -423,6 +429,6 @@ hr {
 .jquery-modal .modal {
     min-width: 80vw;
     min-height: 80vh;
-    border-radius: var(--border-radius) !important;
+    border-radius: var(--border-radius-small) !important;
     background-color: var(--color-light-bg) !important;
 }

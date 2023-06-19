@@ -121,7 +121,12 @@
         }
 
         public function fetchLatestTasksByUser($user_id) {
-            $query = "SELECT * FROM tasks WHERE created_by = '".$user_id."' ORDER BY task_id DESC LIMIT 5";
+            $query = "SELECT 
+            tasks.*,
+            customers.* 
+            FROM tasks
+            LEFT JOIN customers ON tasks.customer_id = customers.customer_id
+            WHERE tasks.created_by = '".$user_id."' ORDER BY task_id DESC LIMIT 5";
             $query_res = $this->db->conn->query($query);
 
             if ($query_res->num_rows > 0) {
