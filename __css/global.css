@@ -431,4 +431,25 @@ hr {
     min-height: 80vh;
     border-radius: var(--border-radius-small) !important;
     background-color: var(--color-light-bg) !important;
+    padding: 40px !important;
+}
+.jquery-modal .section-labels {
+    display: flex;
+    gap: 2rem;
+}
+.jquery-modal .section-labels * {
+    margin: 0;
+    text-transform: capitalize;
+}
+.jquery-modal .section-labels .modal-label {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-purple-light);
+    margin-bottom: 10px;
+}
+.jquery-modal .section-labels .modal-label p {
+    color: var(--color-purple);
+    font-size: var(--font-size-small);
+    font-weight: bold;
 }

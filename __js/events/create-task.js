@@ -19,6 +19,7 @@
         const multiSelect = $('.js-example-basic-multiple');
         multiSelect.val(null).trigger('change');
     }
+    
     document.addEventListener("CreateTask", function(event) {
         if (isEventListenerAdded) {
             return;
