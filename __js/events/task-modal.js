@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     .then(function(data) {
                         document.querySelector(".modal").innerHTML = data;
 
-                        var quill = new Quill('#QuillEditorModal', {
+                        var quill = new Quill('.quill-text-area-modal', {
                             theme: 'snow'
                         });
                     })

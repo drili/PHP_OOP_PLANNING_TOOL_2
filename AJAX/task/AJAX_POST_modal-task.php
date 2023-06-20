@@ -18,10 +18,11 @@
     $tasks->task_id = $data_task_id;
 
     $response = $tasks->fetchTask();
-
     $response = [
         "query_status" => $response
     ];
+
+    $task_median = abs(round(($response["query_status"][0]["task_low"] + $response["query_status"][0]["task_high"]), 2) / 2);
 ?>
 
 <?php if ($response["query_status"] !== "ERR_FETCHING_TASK") : ?>
@@ -36,7 +37,7 @@
                     <div class="grid-x grid-margin-x">
 
                         <div class="cell small-12 cell-section-top">
-                            <section class="section-labels">
+                            <section class="section-labels section-mb">
                                 <div class="modal-label">
                                     <p><?php echo $response["query_status"][0]["customer_name"]; ?></p>
                                 </div>
@@ -60,10 +61,59 @@
                         </div> <!-- .cell-section-top -->
 
                         <div class="cell small-12 large-8 cell-section-left">
-                            <section class="section-update-form boxed-section">
-                                <form action="" class="FormUpdateTask">
-                                    <h2>Form Update Task</h2>
-                                </form>
+                            <section class="section-update-form boxed-section section-mb">
+                                <div class="title">
+                                    <h4><?php echo $response["query_status"][0]["task_name"]; ?></h4>
+                                    <hr>
+                                </div>
+
+                                <form action="" id="FormUpdateTask">
+                                    <div class="grid-container-fluid div-form-update-task">
+                                        <div class="grid-x grid-margin-x grid-x-component">
+
+                                            <div class="cell small-12 large-8">
+                                                <label for="task_name">Task Name</label>
+                                                <input type="text" value="<?php echo $response["query_status"][0]["task_name"]; ?>" name="task_name" required>
+                                            </div>
+
+                                            <div class="cell small-12 large-2">
+                                                <label for="task_low">Task Low</label>
+                                                <input type="number" min="1" value="<?php echo $response["query_status"][0]["task_low"]; ?>" name="task_low" required>
+                                            </div>
+
+                                            <div class="cell small-12 large-2">
+                                                <label for="task_high">Task High</label>
+                                                <input type="number" max="100" value="<?php echo $response["query_status"][0]["task_high"]; ?>" name="task_high" required>
+                                            </div>
+
+                                            <div class="cell small-12 section-mb">
+                                                <label for="task_description">Task Description</label>
+                                                <div class="quill-box">
+                                                    <div class="quill-text-area-modal">
+                                                        <?php echo $response["query_status"][0]["task_description"]; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="cell small-12 large-4">
+                                                <div class="task-median">
+                                                    <h5 class="section-underline">Task Median: <b><?php echo $task_median; ?></b></h5>
+                                                </div>
+                                            </div>
+
+                                            <div class="cell small-12 large-8">
+                                                <div class="buttons section-flex-right">
+                                                    <button class="btn btn-primary btn-update-task margin-0">Update Task</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div> <!-- .div-form-update-task -->
+                                </form> <!-- #FormUpdateTask -->
+                            </section>
+
+                            <section class="section-register-time-form boxed-section section-mb">
+                                <h2>Hello</h2>
                             </section>
                         </div> <!-- .cell-section-left -->
 

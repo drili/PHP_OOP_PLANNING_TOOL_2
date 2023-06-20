@@ -34,17 +34,17 @@
                         <div class="grid-container-fluid component-form-create-task">
                             <div class="grid-x grid-margin-x grid-x-component">
                                 
-                                <div class="cell small-12 large-6">
+                                <div class="cell small-12 large-8">
                                     <label for="task_name">Task Name</label>
                                     <input type="text" placeholder="More Bizz" name="task_name" required>
                                 </div>
 
-                                <div class="cell small-12 large-3">
+                                <div class="cell small-12 large-2">
                                     <label for="task_low">Task Low</label>
                                     <input type="number" min="1" placeholder="1" name="task_low" required>
                                 </div>
 
-                                <div class="cell small-12 large-3">
+                                <div class="cell small-12 large-2">
                                     <label for="task_high">Task High</label>
                                     <input type="number" max="100" placeholder="100" name="task_high" required>
                                 </div>

@@ -230,6 +230,23 @@ img {
     margin-bottom: var(--section-mb-inner);
 }
 
+.section-align-right {
+    text-align: right;
+}
+
+.section-flex-right {
+    display: flex;
+    justify-content: end;
+}
+
+.margin-0 {
+    margin: 0 !important;
+}
+
+.section-underline {
+    text-decoration: underline;
+}
+
 .container-boxed {
     padding: 20px;
 }
