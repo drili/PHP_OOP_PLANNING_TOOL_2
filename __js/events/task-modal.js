@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         var quill = new Quill('.quill-text-area-modal', {
                             theme: 'snow'
                         });
+
+                        accordionTitle();
                     })
                     .catch(function(error) {
                         console.log("::: ERROR: AJAX_POST_recent-tasks-created: " + error.message);

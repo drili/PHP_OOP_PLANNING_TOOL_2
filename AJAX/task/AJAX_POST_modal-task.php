@@ -9,6 +9,9 @@
     require $current_directory . "/" . "../../parts/header_pre.php";
     require $current_directory . "/" . "../../classes/Tasks.php";
 
+    // *** Components
+    require $current_directory . "/" . "/../../components/utils/AccordionTitle.php";
+
     $requestBody = file_get_contents('php://input');
     $data = json_decode($requestBody, true);
 
@@ -69,7 +72,7 @@
 
                                 <form action="" id="FormUpdateTask">
                                     <div class="grid-container-fluid div-form-update-task">
-                                        <div class="grid-x grid-margin-x grid-x-component">
+                                        <div class="grid-x grid-margin-x">
 
                                             <div class="cell small-12 large-8">
                                                 <label for="task_name">Task Name</label>
@@ -103,7 +106,7 @@
 
                                             <div class="cell small-12 large-8">
                                                 <div class="buttons section-flex-right">
-                                                    <button class="btn btn-primary btn-update-task margin-0">Update Task</button>
+                                                    <button class="btn btn-secondary btn-update-task margin-0">Update Task</button>
                                                 </div>
                                             </div>
 
@@ -113,7 +116,50 @@
                             </section>
 
                             <section class="section-register-time-form boxed-section section-mb">
-                                <h2>Hello</h2>
+                                <div class="title">
+                                    <h4>Register your time</h4>
+                                    <hr>
+                                </div>
+
+                                <form action="" id="RegisterTaskTime">
+                                    <div class="grid-container-fluid div-form-register-time">
+                                        <div class="grid-x grid-margin-x grid-x-align-bottom">
+
+                                            <div class="cell small-12 large-2">
+                                                <label for="task_register_time">Hours</label>
+                                                <input type="number" min="0.25" step=".25" value="0" name="task_register_time" required>
+                                            </div>
+
+                                            <div class="cell small-12 large-3">
+                                                <label for="task_register_time_date">Date</label>
+                                                <input type="date" name="task_register_time_date" required>
+                                            </div>
+
+                                            <div class="cell small-12 large-3">
+                                                <div class="buttons">
+                                                    <button class="btn btn-primary btn-register-task-time margin-0">Register Time</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="cell small-12 large-4 section-flex-right">
+                                                <section>
+                                                    <h5>Total time registered</h5>
+                                                    <br>
+                                                    <h2 class="text-align-center">0</h2>
+                                                </section>
+                                            </div>
+
+                                        </div>
+                                    </div> <!-- .div-form-register-time -->
+                                </form> <!-- #RegisterTaskTime -->
+                            </section>
+
+                            <section class="section-update-form boxed-section boxed-section-gray section-mb">
+                                <?php
+                                    $title = "Task Activity 2";
+                                    $content = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero voluptatem molestiae reiciendis, facilis perspiciatis fugit rerum sapiente eius cum placeat.";
+                                    echo AccordionTitle($title, $content);
+                                ?>
                             </section>
                         </div> <!-- .cell-section-left -->
 

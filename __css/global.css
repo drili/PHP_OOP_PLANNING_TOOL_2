@@ -67,6 +67,7 @@
 
     --section-mb: 60px;
     --section-mb-inner: 40px;
+    --section-mb-inner-small: 20px;
     --section-mb-inner-mobile: 20px;
     --flex-gap: 30px;
 }
@@ -221,6 +222,17 @@ img {
     grid-template-columns: 350px 1fr;
 }
 
+.grid-x-align-bottom {
+    align-items: end;
+}
+.grid-x-align-bottom * {
+    margin-bottom: 0 !important;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
 .container-outter,
 .container-custom {
     height: 100%;
@@ -228,6 +240,15 @@ img {
 
 .section-mb {
     margin-bottom: var(--section-mb-inner);
+}
+.section-mb-small {
+    margin-bottom: var(--section-mb-inner-small);
+}
+.section-mt {
+    margin-top: var(--section-mb-inner);
+}
+.section-mt-small {
+    margin-top: var(--section-mb-inner-small);
 }
 
 .section-align-right {
@@ -305,6 +326,14 @@ select {
     box-shadow: none !important;
     margin-bottom: 20px !important;
 }
+::-webkit-calendar-picker-indicator {
+    color: var(--color-primary);
+    font-size: var(--font-size-h5-desktop);
+    cursor: pointer;
+}
+input[type="date"] { 
+    padding: 10px !important;
+  }
 
 form button {
     margin-top: 20px;
@@ -452,7 +481,7 @@ hr {
 }
 .jquery-modal .section-labels {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
 }
 .jquery-modal .section-labels * {
     margin: 0;
@@ -469,4 +498,23 @@ hr {
     color: var(--color-purple);
     font-size: var(--font-size-small);
     font-weight: bold;
+}
+
+/*------------------------------------------------------------------
+// Title Accordion
+------------------------------------------------------------------*/
+.title-accordion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.title-accordion * {
+    margin-bottom: 0;
+}
+.accordion-item {
+    display: none;
+}
+.accordion-item.active {
+    display: block;
 }

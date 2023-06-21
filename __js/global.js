@@ -45,25 +45,37 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
+    // *** Global function: accordionTitle
+    window.accordionTitle = function() {
+        const accordionTitles = document.querySelectorAll(".title-accordion");
+    
+        accordionTitles.forEach(function(title) {
+            title.addEventListener("click", function() {
+                const accordionItem = this.nextElementSibling;
+                accordionItem.classList.toggle("active");
+            });
+        });
+    };
+    accordionTitle();
+
     // *** Global event dispatches
     // *** Click task modal
     function eventDispatchClickTask() {
         document.addEventListener("click", function(event) {
-          const clickedElement = event.target.closest(".task-single");
-          
-          if (clickedElement) {
-            event.preventDefault();
+            const clickedElement = event.target.closest(".task-single");
             
-            const dataTaskId = clickedElement.getAttribute("data-task-id");
-            var taskModalEventData = new CustomEvent("TaskModal", {
-                "detail": {
-                    "dataTaskId": dataTaskId
-                }
-            });
-            document.dispatchEvent(taskModalEventData);
-          }
+            if (clickedElement) {
+                event.preventDefault();
+                
+                const dataTaskId = clickedElement.getAttribute("data-task-id");
+                var taskModalEventData = new CustomEvent("TaskModal", {
+                    "detail": {
+                        "dataTaskId": dataTaskId
+                    }
+                });
+                document.dispatchEvent(taskModalEventData);
+            }
         });
-      }
-      
-      eventDispatchClickTask();
+    }
+    eventDispatchClickTask();
 })
