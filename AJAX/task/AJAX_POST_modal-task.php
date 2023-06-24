@@ -4,6 +4,7 @@
 
     // *** Current directory
     $current_directory = dirname(__FILE__);
+    $relative_directory = "..";
 
     // *** Include header.php & Classes
     require $current_directory . "/" . "../../parts/header_pre.php";
@@ -164,7 +165,81 @@
                         </div> <!-- .cell-section-left -->
 
                         <div class="cell small-12 large-4 cell-section-right">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero voluptatem molestiae reiciendis, facilis perspiciatis fugit rerum sapiente eius cum placeat.</p>
+                            <section class="section-settings boxed-section boxed-section-gray section-mb">
+                                <div class="title">
+                                    <h4>Task Settings</h4>
+                                    <hr>
+                                </div>
+
+                                <div class="task-settings task-settings-move-sprint section-mb">
+                                    <form action="" id="MoveTaskSprint">
+                                        <label for="">Assign task to new sprint</label>
+                                        <select name="" id="">
+                                            <option value="" selected disabled>Select Sprint</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+
+                                        <div class="buttons">
+                                            <button class="btn btn-secondary btn-extra-small btn-select-sprint margin-0">Apply New Sprint</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <hr>
+
+                                <div class="task-settings task-settings-archive-task">
+                                    <form action="" id="ArchiveTask">
+                                        <div class="buttons">
+                                            <button class="btn btn-delete btn-extra-small btn-delete-task margin-0"><i class="fa fa-trash"></i> Archive Task</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </section> <!-- .section-settings -->
+
+                            <section class="section-settings-task-persons boxed-section boxed-section-gray section-mb">
+                                <div class="title">
+                                    <h4>Task Persons</h4>
+                                    <hr>
+                                </div>
+
+                                <div class="task-settings task-settings-task-persons">
+                                    <form action="" id="AssignTaskPerson">
+                                        <label for="">Assign Person(s)</label>
+                                        <select name="" id="">
+                                            <option value="" selected disabled>Select Person</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                        </select>
+                                    </form>
+                                </div>
+
+                                <div class="task-assigned-persons">
+                                    <span class="assigned-person">
+                                        <div class="assigned-person-content">
+                                            <img src="<?php echo $relative_directory; ?>/assets/images/user/default-profile.jpg" alt="">
+                                            <p>Username</p>
+                                        </div>
+                                        
+                                        <div class="assigned-person-content">
+                                            <input class="input-small" type="number" step="10" value="0">
+                                            <i class="fa fa-minus-circle"></i>
+                                        </div>
+                                    </span>
+                                    
+                                    <span class="assigned-person">
+                                        <div class="assigned-person-content">
+                                            <img src="<?php echo $relative_directory; ?>/assets/images/user/default-profile.jpg" alt="">
+                                            <p>Username Two</p>
+                                        </div>
+                                        
+                                        <div class="assigned-person-content">
+                                            <input class="input-small" type="number" step="10" value="0">
+                                            <i class="fa fa-minus-circle"></i>
+                                        </div>
+                                    </span>
+                                </div>
+                            </section>
                         </div> <!-- .cell-section-right -->
 
                     </div> <!-- .grid-x grid-margin-x -->
@@ -172,13 +247,6 @@
 
             </div> <!-- .task-modal -->
         </section>
-    </div>
-
-    <div>
-        <h2>ALL:</h2>
-        <pre>
-            <?php var_dump($response["query_status"][0]); ?>
-        </pre>
     </div>
 <?php else : ?>
     <div class="fetch-error">

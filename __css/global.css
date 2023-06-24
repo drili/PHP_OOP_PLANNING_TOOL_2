@@ -294,6 +294,9 @@ button, a {
 .btn-small {
     max-height: 44px;
 }
+.btn-extra-small {
+    padding: 10px 40px;
+}
 .btn.btn-full {
     width: 100%;
     text-align: center;
@@ -305,6 +308,12 @@ button, a {
 .btn.btn-secondary {
     background-color: var(--color-gray);
 }
+.btn.btn-delete {
+    background-color: var(--color-red-light);
+}
+.btn.btn-delete:hover {
+    background-color: var(--color-red);
+}
 
 input {
     /* border: 1px solid var(--color-gray) !important; */
@@ -315,6 +324,10 @@ input {
     margin-bottom: 20px !important;
     box-shadow: none !important;
     background-color: var(--color-light-global) !important;
+}
+input.input-small {
+    padding: 10px !important;
+    height: 25px !important;
 }
 select {
     border: none !important;
@@ -339,6 +352,9 @@ form button {
     margin-top: 20px;
     margin-bottom: 40px;
     cursor: pointer;
+}
+form label {
+    margin-bottom: 5px;
 }
 
 .form-message * {
@@ -373,6 +389,10 @@ form button {
 }
 .boxed-section-gray {
     background-color: var(--color-light-global);
+}
+.boxed-section-gray form input,
+.boxed-section-gray form select {
+    background-color: var(--color-white) !important;
 }
 
 ::placeholder { 
@@ -499,7 +519,48 @@ hr {
     font-size: var(--font-size-small);
     font-weight: bold;
 }
-
+.jquery-modal .assigned-person {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.jquery-modal .assigned-person-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;;
+}
+.jquery-modal .assigned-person img {
+    max-width: 30px;
+    max-height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50% !important;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+}
+.jquery-modal .assigned-person * {
+    margin: 0 !important;
+}
+.jquery-modal .assigned-person input {
+    background-color: var(--color-white) !important;
+    background: var(--color-white) !important;
+    max-width: 80px;
+}
+.jquery-modal .assigned-person i,
+.jquery-modal .assigned-person svg {
+    color: var(--color-red-light) !important;
+    cursor: pointer;
+}
+.jquery-modal .assigned-person i:hover,
+.jquery-modal .assigned-person svg:hover {
+    color: var(--color-red) !important;
+}
+.jquery-modal .assigned-person {
+    margin-bottom: 10px;
+}
 /*------------------------------------------------------------------
 // Title Accordion
 ------------------------------------------------------------------*/
