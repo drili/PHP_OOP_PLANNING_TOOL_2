@@ -170,7 +170,9 @@
             customers.* 
             FROM tasks
             LEFT JOIN customers ON tasks.customer_id = customers.customer_id
-            WHERE tasks.created_by = '".$user_id."' ORDER BY task_id DESC LIMIT 5";
+            WHERE tasks.created_by = '".$user_id."'
+            AND tasks.is_archived = '0'
+            ORDER BY task_id DESC LIMIT 5";
             $query_res = $this->db->conn->query($query);
 
             if ($query_res->num_rows > 0) {
