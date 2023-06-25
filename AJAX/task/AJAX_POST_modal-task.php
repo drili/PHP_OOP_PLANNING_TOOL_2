@@ -35,6 +35,14 @@
     $response_task_time = [
         "query_status" => $response_task_time
     ];
+
+    $task_related_times = new Tasks($db);
+    $task_related_times->task_id = $data_task_id;
+
+    $response_related_times = $task_related_times->taskRelatedTimeRegistrations();
+    $response_related_times = [
+        "query_status" => $response_related_times
+    ];
 ?>
 
 <?php if ($response["query_status"] !== "ERR_FETCHING_TASK") : ?>
@@ -177,8 +185,37 @@
 
                             <section class="section-update-form boxed-section boxed-section-gray section-mb">
                                 <?php
-                                    $title = "Task Activity 2";
-                                    $content = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero voluptatem molestiae reiciendis, facilis perspiciatis fugit rerum sapiente eius cum placeat.";
+                                    $title = "Task Activity";
+
+                                    if ($response_related_times["query_status"] == "ERR_FETCHING_RELATED_REGISTRATIONS") {
+                                        $content = "No time registrations...";
+                                    } else {
+                                        $content = "";
+                                        $content_items = "";
+
+                                        $content .= "<table>";
+                                            $content .= "<thead>";
+                                                $content .= "<tr>";
+                                                    $content .= "<th>Time Registration Amount</th>";
+                                                    $content .= "<th>Person</th>";
+                                                    $content .= "<th>Date</th>";
+                                                $content .= "</tr>";
+                                            $content .= "</thead>";
+
+                                            $content .= "<tbody>";
+                                            foreach ($response_related_times["query_status"] as $item) {
+                                                $content_items .= "<tr>";
+                                                    $content_items .= "<td>" . $item["time_registration_amount"] . "</td>";
+                                                    $content_items .= "<td>" . $item["username"] . "</td>";
+                                                    $content_items .= "<td>" . $item["time_registration_date"] . "</td>";
+                                                $content_items .= "</tr>";
+                                            }
+                                            $content .= $content_items;
+                                            $content .= "</tbody>";
+                                        $content .= "</table>";
+                                        $content .= "<div><p>Edit your own time registrations in the time registrations view.</p></div>";
+                                    }
+
                                     echo AccordionTitle($title, $content);
                                 ?>
                             </section>

@@ -210,4 +210,26 @@
             }
         }
 
+        public function taskRelatedTimeRegistrations() {
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
+
+            $query = "SELECT time_registrations.*,
+            users.*
+            FROM time_registrations
+            LEFT JOIN users ON time_registrations.person_id = users.id
+            WHERE task_id = $task_id";
+
+            $query_res = $this->db->conn->query($query);
+            if ($query_res->num_rows > 0) {
+                $time_registrations_array = array();
+                while ($row = $query_res->fetch_assoc()) {
+                    $time_registrations_array[] = $row;
+                }
+
+                return $time_registrations_array;
+            } else {
+                return "ERR_FETCHING_RELATED_REGISTRATIONS";
+            }
+        }
+
     }

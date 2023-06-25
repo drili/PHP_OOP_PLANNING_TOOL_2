@@ -579,3 +579,13 @@ hr {
 .accordion-item.active {
     display: block;
 }
+.accordion-item table * {
+    font-size: 12px;
+}
+.accordion-item table button {
+    padding: 5px 20px;
+}
+.accordion-item table tr th,
+.accordion-item table tr td {
+    padding: 5px 20px;
+}
