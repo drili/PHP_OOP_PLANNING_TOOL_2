@@ -9,6 +9,7 @@
     // *** Include header.php & Classes
     require $current_directory . "/" . "../../parts/header_pre.php";
     require $current_directory . "/" . "../../classes/Tasks.php";
+    require $current_directory . "/" . "../../classes/Sprints.php";
 
     // *** Components
     require $current_directory . "/" . "/../../components/utils/AccordionTitle.php";
@@ -25,9 +26,9 @@
     $response = [
         "query_status" => $response
     ];
-
     $task_median = abs(round(($response["query_status"][0]["task_low"] + $response["query_status"][0]["task_high"]), 2) / 2);
 
+    // *** Task time
     $task_time = new Tasks($db);
     $task_time->task_id = $data_task_id;
 
@@ -36,6 +37,7 @@
         "query_status" => $response_task_time
     ];
 
+    // *** Task activity time
     $task_related_times = new Tasks($db);
     $task_related_times->task_id = $data_task_id;
 
@@ -43,6 +45,10 @@
     $response_related_times = [
         "query_status" => $response_related_times
     ];
+
+    // *** Valid sprints
+    $valid_sprints = new Sprints($db);
+    $response_valid_sprints = $valid_sprints->getValidSprints();
 ?>
 
 <?php if ($response["query_status"] !== "ERR_FETCHING_TASK") : ?>
@@ -230,11 +236,14 @@
 
                                 <div class="task-settings task-settings-move-sprint section-mb">
                                     <form action="" id="MoveTaskSprint">
+                                        <input type="hidden" name="task_id" value="<?php echo $data_task_id; ?>">
+
                                         <label for="">Assign task to new sprint</label>
-                                        <select name="" id="">
+                                        <select name="sprint_id" id="">
                                             <option value="" selected disabled>Select Sprint</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
+                                            <?php foreach($response_valid_sprints as $valid_sprint) : ?>
+                                                <option value="<?php echo $valid_sprint["sprint_id"] ?>"><?php echo $valid_sprint["sprint_name"] ?></option>
+                                            <?php endforeach; ?>
                                         </select>
 
                                         <div class="buttons">

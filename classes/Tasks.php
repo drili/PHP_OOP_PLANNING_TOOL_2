@@ -101,6 +101,27 @@
             }
         }
 
+        public function updateTaskSprint() {
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
+            $sprint_id = mysqli_real_escape_string($this->db->conn, $this->sprint_id);
+            
+            $query = "UPDATE tasks SET
+            sprint_id = '$sprint_id'
+            WHERE task_id = $task_id";
+
+            $result = $this->db->conn->query($query);
+
+            if ($result === false) {
+                return "ERR_TASK_UPDATED: " . $this->db->conn->error;
+            } else {
+                if (mysqli_affected_rows($this->db->conn) > 0) {
+                    return "SUCCESS_TASK_UPDATED";
+                } else {
+                    return "ERR_TASK_UPDATED";
+                }
+            }
+        }
+
         public function deleteTask() {
 
         }

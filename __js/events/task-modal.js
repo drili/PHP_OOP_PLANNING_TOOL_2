@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         accordionTitle();
                         formUpdateTask();
                         formTaskRegisterTime();
+                        updateTaskSprint();
                     })
                     .catch(function(error) {
                         console.log("::: ERROR: AJAX_POST_recent-tasks-created: " + error.message);
@@ -131,6 +132,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 })
                 .catch(function(error) {
                     console.log("::: ERROR: AJAX_POST_register-task-time: " + error.message);
+                });
+            })
+        }
+        
+        function updateTaskSprint() {
+            const formMoveTaskSprint = document.querySelector("#MoveTaskSprint");
+
+            formMoveTaskSprint.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(formMoveTaskSprint);
+
+                fetch("../AJAX/task/AJAX_POST_update-task-sprint.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error making AJAX request: " + response.status + " " + response.statusText);
+                    }
+                })
+                .then(function(data) {
+                    if (data.query_status === "SUCCESS_TASK_UPDATED") {
+                        var taskModalEventData = new CustomEvent("TaskModal", {
+                            "detail": {
+                                "dataTaskId": data.task_id
+                            }
+                        });
+                        document.dispatchEvent(taskModalEventData);
+
+                        toastMessageSuccess("Success!", "Task has been moved to a new sprint");
+                    } else {
+                        toastMessageError("Error!", "There was an error moving this task to another sprint");
+                    }
+                })
+                .catch(function(error) {
+                    console.log("::: ERROR: AJAX_POST_update-task-sprint: " + error.message);
                 });
             })
         }
