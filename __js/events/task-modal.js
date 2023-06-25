@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     })
                     .then(function(data) {
                         document.querySelector(".modal").innerHTML = data;
+                        document.getElementById('datepicker').valueAsDate = new Date();
 
                         var quill = new Quill('.quill-text-area-modal', {
                             theme: 'snow'
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
                         accordionTitle();
                         formUpdateTask();
+                        formTaskRegisterTime();
                     })
                     .catch(function(error) {
                         console.log("::: ERROR: AJAX_POST_recent-tasks-created: " + error.message);
@@ -47,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         // *** Functions: Update Task
         function formUpdateTask() {
-            const btnUpdateTask = document.querySelector(".btn-update-task");
             const updateForm = document.querySelector("#FormUpdateTask");
     
             updateForm.addEventListener("submit", function(e) {
@@ -90,6 +91,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 })
                 .catch(function(error) {
                     console.log("::: ERROR: AJAX_POST_update-task: " + error.message);
+                });
+            })
+        }
+
+        // *** Functions: Update Task
+        function formTaskRegisterTime() {
+            const registerTimeForm = document.querySelector("#RegisterTaskTime");
+
+            registerTimeForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const registerFormData = new FormData(registerTimeForm);
+
+                fetch("../AJAX/task/AJAX_POST_register-task-time.php", {
+                    method: "POST",
+                    body: registerFormData
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error making AJAX request: " + response.status + " " + response.statusText);
+                    }
+                })
+                .then(function(data) {
+                    if (data.query_status === "SUCCESS_TIME_REGISTRATION") {
+                        var taskModalEventData = new CustomEvent("TaskModal", {
+                            "detail": {
+                                "dataTaskId": data.task_id
+                            }
+                        });
+                        document.dispatchEvent(taskModalEventData);
+
+                        toastMessageSuccess("Success!", "Time has been registered successfully");
+                    } else {
+                        toastMessageError("Error!", "There was an error registering your time registration");
+                    }
+                })
+                .catch(function(error) {
+                    console.log("::: ERROR: AJAX_POST_register-task-time: " + error.message);
                 });
             })
         }

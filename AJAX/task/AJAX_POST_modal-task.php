@@ -27,6 +27,14 @@
     ];
 
     $task_median = abs(round(($response["query_status"][0]["task_low"] + $response["query_status"][0]["task_high"]), 2) / 2);
+
+    $task_time = new Tasks($db);
+    $task_time->task_id = $data_task_id;
+
+    $response_task_time = $task_time->taskTotalTimeRegistration();
+    $response_task_time = [
+        "query_status" => $response_task_time
+    ];
 ?>
 
 <?php if ($response["query_status"] !== "ERR_FETCHING_TASK") : ?>
@@ -128,6 +136,8 @@
                                     <div class="grid-container-fluid div-form-register-time">
                                         <div class="grid-x grid-margin-x grid-x-align-bottom">
 
+                                            <input type="hidden" name="task_id" value="<?php echo $data_task_id; ?>">
+
                                             <div class="cell small-12 large-2">
                                                 <label for="task_register_time">Hours</label>
                                                 <input type="number" min="0.25" step=".25" value="0" name="task_register_time" required>
@@ -135,7 +145,7 @@
 
                                             <div class="cell small-12 large-3">
                                                 <label for="task_register_time_date">Date</label>
-                                                <input type="date" name="task_register_time_date" required>
+                                                <input id="datepicker" type="date" name="task_register_time_date" required>
                                             </div>
 
                                             <div class="cell small-12 large-3">
@@ -148,7 +158,15 @@
                                                 <section>
                                                     <h5>Total time registered</h5>
                                                     <br>
-                                                    <h2 class="text-align-center">0</h2>
+                                                    <h2 class="text-align-center">
+                                                        <?php
+                                                            if ($response_task_time["query_status"] == "ERR_FETCHING_TIME_REGISTRATIONS") {
+                                                                echo "0";
+                                                            } else {
+                                                                echo array_sum($response_task_time["query_status"]);
+                                                            }
+                                                        ?>
+                                                    </h2>
                                                 </section>
                                             </div>
 

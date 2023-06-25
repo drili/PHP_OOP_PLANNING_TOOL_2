@@ -163,4 +163,51 @@
                 return "ERR_FETCHING_TASKS_BY_USER";
             }
         }
+
+        public function taskTimeRegistration() {
+            $time_registration_amount = mysqli_real_escape_string($this->db->conn, $this->time_registration_amount);
+            $time_registration_date = mysqli_real_escape_string($this->db->conn, $this->time_registration_date);
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
+            $person_id = mysqli_real_escape_string($this->db->conn, $this->person_id);
+            $time_registration_note = mysqli_real_escape_string($this->db->conn, $this->time_registration_note);
+
+            $query = "INSERT INTO time_registrations
+            (time_registration_amount,
+            time_registration_date,
+            task_id,
+            person_id,
+            time_registration_note) VALUES
+            ('$time_registration_amount',
+            '$time_registration_date',
+            '$task_id',
+            '$person_id',
+            '$time_registration_note')";
+
+            $this->db->conn->query($query);
+
+            if (mysqli_affected_rows($this->db->conn) > 0) {
+                return "SUCCESS_TIME_REGISTRATION";
+            } else {
+                return "ERR_TIME_REGISTRATION";
+            }
+        }
+
+        public function taskTotalTimeRegistration() {
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
+
+            $query = "SELECT * FROM time_registrations WHERE task_id = $task_id";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res->num_rows > 0) {
+                $time_registrations_array = array();
+                while ($row = $query_res->fetch_assoc()) {
+                    $time_registrations_array[] = $row["time_registration_amount"];
+                }
+
+                return $time_registrations_array;
+            } else {
+                return "ERR_FETCHING_TIME_REGISTRATIONS";
+            }
+        }
+
     }
