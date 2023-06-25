@@ -75,6 +75,8 @@
                                     <div class="grid-container-fluid div-form-update-task">
                                         <div class="grid-x grid-margin-x">
 
+                                            <input type="hidden" name="task_id" value="<?php echo $data_task_id; ?>">
+
                                             <div class="cell small-12 large-8">
                                                 <label for="task_name">Task Name</label>
                                                 <input type="text" value="<?php echo $response["query_status"][0]["task_name"]; ?>" name="task_name" required>

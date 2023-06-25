@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     document.addEventListener("TaskModal", function(event) {
+        // *** Fetch Modal
         $(".modal").remove();
 
         var dataTaskId = event.detail.dataTaskId;
@@ -36,11 +37,62 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         });
 
                         accordionTitle();
+                        formUpdateTask();
                     })
                     .catch(function(error) {
                         console.log("::: ERROR: AJAX_POST_recent-tasks-created: " + error.message);
                     });
             }
         }
+
+        // *** Functions: Update Task
+        function formUpdateTask() {
+            const btnUpdateTask = document.querySelector(".btn-update-task");
+            const updateForm = document.querySelector("#FormUpdateTask");
+    
+            updateForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+    
+                const updateFormData = new FormData(updateForm);
+                const taskDescription = document.querySelector("#FormUpdateTask .ql-editor").innerHTML;
+    
+                updateFormData.append("task_description", taskDescription);
+    
+                fetch("../AJAX/task/AJAX_POST_update-task.php", {
+                    method: "POST",
+                    body: updateFormData
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error making AJAX request: " + response.status + " " + response.statusText);
+                    }
+                })
+                .then(function(data) {
+                    if(data.query_status === "SUCCESS_TASK_UPDATED") {
+                        var taskModalEventData = new CustomEvent("TaskModal", {
+                            "detail": {
+                                "dataTaskId": data.task_id
+                            }
+                        });
+                        document.dispatchEvent(taskModalEventData);
+
+                        var event__RecentTasksCreated = new Event("RecentTasksCreated");
+                        document.dispatchEvent(event__RecentTasksCreated);
+
+                        toastMessageSuccess("Success!", "Task has been updated successfully");
+                    } else if (data.query_status === "ERR_UPDATING_TASK_TIME") {
+                        toastMessageError("Error!", "Task low cannot be higher than task high");
+                    } else {
+                        toastMessageError("Error!", "There was an error updating the task");
+                    }
+                })
+                .catch(function(error) {
+                    console.log("::: ERROR: AJAX_POST_update-task: " + error.message);
+                });
+            })
+        }
+
     });
 });

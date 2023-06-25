@@ -75,7 +75,30 @@
         }
 
         public function updateTask() {
+            $task_name = mysqli_real_escape_string($this->db->conn, $this->task_name);
+            $task_low = mysqli_real_escape_string($this->db->conn, $this->task_low);
+            $task_high = mysqli_real_escape_string($this->db->conn, $this->task_high);
+            $task_description = mysqli_real_escape_string($this->db->conn, $this->task_description);
+            $task_id  = mysqli_real_escape_string($this->db->conn, $this->task_id);
+            
+            $query = "UPDATE tasks SET
+            task_name = '$task_name',
+            task_low = '$task_low',
+            task_high = '$task_high',
+            task_description = '$task_description'
+            WHERE task_id = $task_id";
 
+            $result = $this->db->conn->query($query);
+
+            if ($result === false) {
+                return "ERR_TASK_UPDATED: " . $this->db->conn->error;
+            } else {
+                if (mysqli_affected_rows($this->db->conn) > 0) {
+                    return "SUCCESS_TASK_UPDATED";
+                } else {
+                    return "ERR_TASK_UPDATED";
+                }
+            }
         }
 
         public function deleteTask() {
