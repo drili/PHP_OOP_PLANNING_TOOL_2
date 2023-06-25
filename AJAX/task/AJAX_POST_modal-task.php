@@ -256,6 +256,8 @@
 
                                 <div class="task-settings task-settings-archive-task">
                                     <form action="" id="ArchiveTask">
+                                        <input type="hidden" name="task_id" value="<?php echo $data_task_id; ?>">
+
                                         <div class="buttons">
                                             <button class="btn btn-delete btn-extra-small btn-delete-task margin-0"><i class="fa fa-trash"></i> Archive Task</button>
                                         </div>

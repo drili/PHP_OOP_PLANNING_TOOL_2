@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         formUpdateTask();
                         formTaskRegisterTime();
                         updateTaskSprint();
+                        archiveTask();
                     })
                     .catch(function(error) {
                         console.log("::: ERROR: AJAX_POST_recent-tasks-created: " + error.message);
@@ -173,6 +174,44 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     console.log("::: ERROR: AJAX_POST_update-task-sprint: " + error.message);
                 });
             })
+        }
+
+        function archiveTask() {
+            const formArchiveTask = document.querySelector("#ArchiveTask");
+
+            formArchiveTask.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(formArchiveTask);
+
+                fetch("../AJAX/task/AJAX_POST_acrhive-task.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error making AJAX request: " + response.status + " " + response.statusText);
+                    }
+                })
+                .then(function(data) {
+                    if (data.query_status === "SUCCESS_ARCHIVING_TASK") {
+                        var event__RecentTasksCreated = new Event("RecentTasksCreated");
+                        document.dispatchEvent(event__RecentTasksCreated);
+
+                        $(".modal").remove();
+                        
+                        toastMessageSuccess("Success!", "Task has been archived");
+                    } else {
+                        toastMessageError("Error!", "There was an error archiving this task");
+                    }
+                })
+                .catch(function(error) {
+                    console.log("::: ERROR: AJAX_POST_update-task-sprint: " + error.message);
+                });
+            })
+            ArchiveTask
         }
 
     });

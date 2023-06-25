@@ -122,8 +122,24 @@
             }
         }
 
-        public function deleteTask() {
+        public function archiveTask() {
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
 
+            $query = "UPDATE tasks SET 
+            is_archived = '1'
+            WHERE task_id = $task_id";
+
+            $result = $this->db->conn->query($query);
+
+            if ($result === false) {
+                return "ERR_ARCHIVING_TASK";
+            } else {
+                if (mysqli_affected_rows($this->db->conn) > 0) {
+                    return "SUCCESS_ARCHIVING_TASK";
+                } else {
+                    return "ERR_ARCHIVING_TASK";
+                }
+            }
         }
 
         public function fetchTask() {
