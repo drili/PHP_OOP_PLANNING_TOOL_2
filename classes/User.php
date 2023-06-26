@@ -1,6 +1,7 @@
 <?php
     class User {
         private $db;
+        public $id;
 
         public function __construct($db) {
             $this->db = $db;
@@ -93,6 +94,60 @@
                 return "ERROR_DARKMODE";
             } else {
                 return "SUCCESS_DARKMODE";
+            }
+        }
+
+        public function updateUserInfo($user_id, $username, $email) {
+            $user_id = mysqli_real_escape_string($this->db->conn, $user_id);
+            $username = mysqli_real_escape_string($this->db->conn, $username);
+            $email = mysqli_real_escape_string($this->db->conn, $email);
+
+            $query = "UPDATE users SET
+            username = '$username',
+            email = '$email'
+            WHERE id = $user_id";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res === false) {
+                return "ERROR_UPDATE_USER";
+            } else {
+                $_SESSION['user']['username'] = $username;
+                $_SESSION['user']['email'] = $email;
+                return "SUCCESS_UPDATE_USER";
+            }
+        }
+
+        public function updateUserImage($user_id, $profileImage) {
+            $user_id = mysqli_real_escape_string($this->db->conn, $user_id);
+
+            if ($profileImage["error"] === UPLOAD_ERR_OK) {
+                // ...
+            } else {
+                return "ERR_IMAGE_UPLOAD: " . $profileImage["error"];
+            }
+
+            $targetDir = "../assets/images/user/";
+            $targetFile = $targetDir . basename($profileImage["name"]);
+            $targetFileName = basename($profileImage["name"]);
+            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+            $validExtensions = array("jpg", "jpeg", "png", "gif");
+            if (in_array($imageFileType, $validExtensions)) {
+                if (move_uploaded_file($profileImage["tmp_name"], $targetFile)) {
+                    $query = "UPDATE users SET profile_image = '$targetFileName' WHERE id = $user_id";
+                    $result = $this->db->conn->query($query);
+
+                    if ($result === false) {
+                        return "ERR_PROFILE_IMAGE_UPDATE: " . $this->db->conn->error;
+                    } else {
+                        $_SESSION['user']['profile_image'] = $targetFileName;
+                        return "SUCCESS_PROFILE_IMAGE_UPDATE";
+                    }
+                } else {
+                    return "ERR_IMAGE_UPLOAD";
+                }
+            } else {
+                return "ERR_INVALID_IMAGE";
             }
         }
     }

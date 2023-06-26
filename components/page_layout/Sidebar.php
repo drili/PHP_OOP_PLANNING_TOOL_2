@@ -28,7 +28,7 @@
 
     <div class="sidebar-profile sidebar-section">
         <div class="sidebar-profile-inner">
-            <img src="<?php echo $relative_directory; ?>/assets/images/user/default-profile.jpg" alt="">
+            <img src="<?php echo $relative_directory; ?>/assets/images/user/<?php echo $_SESSION['user']["profile_image"]; ?>" alt="">
             <div class="profile-settings">
                 <h5><?php echo $_SESSION['user']["username"]; ?></h5>
             </div>
