@@ -1,0 +1,41 @@
+.component-card .card-title {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.component-card .card-title * {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.component-card .card-title i,
+.component-card .card-title svg {
+    color: var(--color-secondary);
+    font-size: var(--font-size-h3-desktop);
+}
+
+.component-card .card-icon {
+    background-color: var(--color-gray);
+    padding: 10px;
+    border-radius: var(--border-radius-small);
+}
+
+.component-card .card-divider-custom {
+    position: relative;
+    display: block;
+    border-radius: var(--border-radius-small);
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-secondary-light);
+}
+.component-card .card-divider-custom::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 4px;
+    background-color: var(--color-secondary);
+    z-index: 1;
+}

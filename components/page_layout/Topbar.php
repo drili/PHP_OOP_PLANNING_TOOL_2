@@ -12,7 +12,7 @@
         
         <div class="topbar-content-inner">
             <div class="info-section">
-                <p>January 2023 <i class="fa fa-briefcase-clock"></i></p>
+                
             </div>
             
             <div class="buttons-section">

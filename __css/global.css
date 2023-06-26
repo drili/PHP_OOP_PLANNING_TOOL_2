@@ -383,7 +383,7 @@ form label {
 .boxed-section {
     background-color: var(--color-white);
     border-radius: var(--border-radius-small);
-    padding: 20px 40px;
+    padding: 30px 40px;
     box-shadow: var(--box-shadow);
     margin-bottom: 40px;
 }
