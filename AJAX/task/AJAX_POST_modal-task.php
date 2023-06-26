@@ -271,41 +271,8 @@
                                     <hr>
                                 </div>
 
-                                <div class="task-settings task-settings-task-persons">
-                                    <form action="" id="AssignTaskPerson">
-                                        <label for="">Assign Person(s)</label>
-                                        <select name="" id="">
-                                            <option value="" selected disabled>Select Person</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                        </select>
-                                    </form>
-                                </div>
-
-                                <div class="task-assigned-persons">
-                                    <span class="assigned-person">
-                                        <div class="assigned-person-content">
-                                            <img src="<?php echo $relative_directory; ?>/assets/images/user/default-profile.jpg" alt="">
-                                            <p>Username</p>
-                                        </div>
-                                        
-                                        <div class="assigned-person-content">
-                                            <input class="input-small" type="number" step="10" value="0">
-                                            <i class="fa fa-minus-circle"></i>
-                                        </div>
-                                    </span>
+                                <div class="task-settings-persons-fetched">
                                     
-                                    <span class="assigned-person">
-                                        <div class="assigned-person-content">
-                                            <img src="<?php echo $relative_directory; ?>/assets/images/user/default-profile.jpg" alt="">
-                                            <p>Username Two</p>
-                                        </div>
-                                        
-                                        <div class="assigned-person-content">
-                                            <input class="input-small" type="number" step="10" value="0">
-                                            <i class="fa fa-minus-circle"></i>
-                                        </div>
-                                    </span>
                                 </div>
                             </section>
                         </div> <!-- .cell-section-right -->

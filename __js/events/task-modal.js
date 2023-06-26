@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         formTaskRegisterTime();
                         updateTaskSprint();
                         archiveTask();
+                        fetchTaskPersons(dataTaskId);
                     })
                     .catch(function(error) {
                         console.log("::: ERROR: AJAX_POST_recent-tasks-created: " + error.message);
@@ -211,7 +212,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     console.log("::: ERROR: AJAX_POST_update-task-sprint: " + error.message);
                 });
             })
-            ArchiveTask
+        }
+
+        function fetchTaskPersons(dataTaskId) {
+            console.log(`dataTaskId: ${dataTaskId}`);
+            fetch("../AJAX/task/AJAX_FETCH_task-persons.php", {
+                method: "POST",
+                body: JSON.stringify({ dataTaskId: dataTaskId })
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error("Error making AJAX request: " + response.status + " " + response.statusText);
+                }
+            })
+            .then(function(data) {
+                document.querySelector(".task-settings-persons-fetched").innerHTML = data;
+            })
+            .catch(function(error) {
+                console.log("::: ERROR: AJAX_FETCH_task-persons.php: " + error.message);
+            });
         }
 
     });
