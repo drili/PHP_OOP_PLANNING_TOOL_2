@@ -150,4 +150,17 @@
                 return "ERR_INVALID_IMAGE";
             }
         }
+
+        public function updateUserPassword($user_id, $new_password) {
+            $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+            $query = "UPDATE users SET password = '$hashed_password' WHERE id = $user_id";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res === false) {
+                return "ERROR_UPDATE_PASSWORD";
+            } else {
+                return "SUCCESS_UPDATE_PASSWORD";
+            }
+        }
     }

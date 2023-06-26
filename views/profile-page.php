@@ -8,6 +8,7 @@
 
     // *** Components
     require $current_directory . "/../components/page_layout/PageTitle.php";
+    require $current_directory . "/../components/page_layout/PageContentNavigation.php";
     require $current_directory . "/../components/utils/FormUpdateUser.php";
 ?>
 
@@ -26,6 +27,14 @@
                 $cell_size = "6";
                 echo FormUpdateUser($cell_size, $relative_directory, $db, $user);
             ?>
+
+            <?php
+                $cell_size = "4";
+                $cell_offset = "2";
+                $component_nav = "component-update-user-image";
+                echo PageContentNavigation($cell_size, $cell_offset, $relative_directory, $component_nav);
+            ?>
+
         </div>
     </div>
 

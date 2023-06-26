@@ -1,0 +1,5 @@
+.component-page-content-navigation .nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
