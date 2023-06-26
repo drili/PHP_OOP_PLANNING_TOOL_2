@@ -2,6 +2,7 @@
     class Persons {
         private $db;
         public $task_id;
+        public $person_id;
 
         public function __construct($db) {
             $this->db = $db;
@@ -61,6 +62,34 @@
                 return $not_assigned_persons;
             } else {
                 return "ERR_ASSIGNED_PERSONS";
+            }
+        }
+
+        public function assignTaskPerson() {
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
+            $person_id = mysqli_real_escape_string($this->db->conn, $this->person_id);
+
+            $query = "INSERT INTO tasks_persons (task_id, person_id) VALUES ('$task_id', '$person_id')";
+            $this->db->conn->query($query);
+
+            if (mysqli_affected_rows($this->db->conn) > 0) {
+                return "SUCCESS_ASSIGN_PERSON";
+            } else {
+                return "ERROR_ASSIGN_PERSON";
+            }
+        }
+
+        public function unAssignTaskPerson() {
+            $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
+            $person_id = mysqli_real_escape_string($this->db->conn, $this->person_id);
+
+            $query = "DELETE FROM tasks_persons WHERE task_id = $task_id AND person_id = $person_id";
+            $this->db->conn->query($query);
+
+            if (mysqli_affected_rows($this->db->conn) > 0) {
+                return "SUCCESS_UNASSIGN_PERSON";
+            } else {
+                return "ERROR_UNASSIGN_PERSON";
             }
         }
     }

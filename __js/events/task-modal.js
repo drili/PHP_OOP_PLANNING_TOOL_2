@@ -229,9 +229,83 @@ document.addEventListener("DOMContentLoaded", function(event) {
             })
             .then(function(data) {
                 document.querySelector(".task-settings-persons-fetched").innerHTML = data;
+
+                assignPerson(dataTaskId);
+                unAssignPerson(dataTaskId);
             })
             .catch(function(error) {
                 console.log("::: ERROR: AJAX_FETCH_task-persons.php: " + error.message);
+            });
+        }
+
+        function assignPerson(dataTaskId) {
+            var selectElement = document.getElementById("selectPerson");
+            selectElement.addEventListener("change", function(e) {
+                var personId = this.value;
+                
+                fetch("../AJAX/task/AJAX_POST_assign-person.php", {
+                    method: "POST",
+                    body: JSON.stringify({ 
+                        personId: personId,
+                        dataTaskId: dataTaskId
+                    })
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error making AJAX request: " + response.status + " " + response.statusText);
+                    }
+                })
+                .then(function(data) {
+                    if (data.query_status === "SUCCESS_ASSIGN_PERSON") {
+                        fetchTaskPersons(dataTaskId);
+                    }
+                })
+                .catch(function(error) {
+                    console.log("::: ERROR: AJAX_POST_assign-person.php: " + error.message);
+                });
+            })
+        }
+
+        function unAssignPerson(dataTaskId) {
+            const assignedPersonsContainer = document.querySelector(".task-settings-persons-fetched");
+
+            assignedPersonsContainer.addEventListener("click", function(event) {
+                const totalPersons = document.querySelectorAll(".assigned-person");
+                const minusIcon = event.target.closest(".fa-circle-minus");
+
+                if (totalPersons.length == 1) {
+                    return;
+                }
+
+                if (minusIcon) {
+                    const personId = minusIcon.getAttribute("data-person-id");
+                    
+                    fetch("../AJAX/task/AJAX_POST_unassign-person.php", {
+                        method: "POST",
+                        body: JSON.stringify({ 
+                            personId: personId,
+                            dataTaskId: dataTaskId
+                        })
+                    })
+                    .then(function(response) {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error("Error making AJAX request: " + response.status + " " + response.statusText);
+                        }
+                    })
+                    .then(function(data) {
+                        if (data.query_status === "SUCCESS_UNASSIGN_PERSON") {
+                            fetchTaskPersons(dataTaskId);
+                        }
+                    })
+                    .catch(function(error) {
+                        console.log("::: ERROR: AJAX_POST_unassign-person.php: " + error.message);
+                    });
+                    
+                }
             });
         }
 

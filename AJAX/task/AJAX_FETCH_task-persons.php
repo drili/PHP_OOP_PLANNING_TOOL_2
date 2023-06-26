@@ -30,11 +30,11 @@
 <div class="task-settings task-settings-task-persons">
     <form action="" id="AssignTaskPerson">
         <label for="">Assign Person(s)</label>
-        <select name="" id="">
+        <select name="" id="selectPerson">
             <option value="" selected disabled>Select Person</option>
 
             <?php foreach ($persons_not_assigned_response as $person) : ?>
-                <option value="<?php echo $person["person_id"]; ?>"><?php echo $person["username"]; ?></option>
+                <option value="<?php echo $person["id"]; ?>"><?php echo $person["username"]; ?></option>
             <?php endforeach; ?>
         </select>
     </form>
