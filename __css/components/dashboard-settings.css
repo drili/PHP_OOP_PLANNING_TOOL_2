@@ -1,0 +1,10 @@
+.component-dashboard-settings #donut-chart {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.component-dashboard-settings .donut-chart-dataset p {
+    margin: 0;
+    font-weight: bold;
+    font-size: var(--font-size-small);
+}

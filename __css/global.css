@@ -339,6 +339,12 @@ select {
     box-shadow: none !important;
     margin-bottom: 20px !important;
 }
+select.select-small {
+    height: 30px;
+    padding: 0 20px;
+    padding-top: 5px !important;
+    padding-right: 30px !important;
+}
 ::-webkit-calendar-picker-indicator {
     color: var(--color-primary);
     font-size: var(--font-size-h5-desktop);

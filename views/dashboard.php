@@ -9,6 +9,7 @@
     // *** Components
     require $current_directory . "/../components/page_layout/PageTitle.php";
     require $current_directory . "/../components/utils/Card.php";
+    require $current_directory . "/../components/static_components/DashboardSettings.php";
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -58,7 +59,9 @@
                 <div class="grid-container-fluid components">
                     <div class="grid-x grid-margin-x grid-x-component">
 
-                        <h2>Hello</h2>
+                        <?php 
+                            echo DashboardSettings();
+                        ?>
 
                     </div>
                 </div>
