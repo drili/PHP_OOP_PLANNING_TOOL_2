@@ -11,6 +11,7 @@
     require $current_directory . "/../components/utils/Card.php";
     require $current_directory . "/../components/static_components/DashboardSettings.php";
     require $current_directory . "/../components/static_components/charts/TimeRegistrationsThisWeek.php";
+    require $current_directory . "/../components/static_components/tables/TeamEffortsTable.php";
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -69,13 +70,18 @@
                             echo TimeRegistrationsThisWeek($cell_size);
                         ?>
 
+                        <?php
+                            $cell_size = "12";
+                            echo TeamEffortsTable($cell_size);
+                        ?>
+
                     </div>
                 </div>
             </div>
 
             <div class="cell small-12 large-3">
                 <div class="grid-container-fluid components">
-                    <div class="grid-x grid-margin-x grid-x-component">
+                    <div class="grid-x grid-margin-x grid-x-component grid-x-height-full">
 
                         <?php 
                             echo DashboardSettings();

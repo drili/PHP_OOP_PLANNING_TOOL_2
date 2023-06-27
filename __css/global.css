@@ -216,6 +216,9 @@ img {
 .grid-x-grid {
     display: grid;
 }
+.grid-x-height-full {
+    height: 100%;
+}
 
 .container-views .grid-x-grid {
     display: grid;
@@ -400,6 +403,12 @@ form label {
 .boxed-section-gray form select {
     background-color: var(--color-white) !important;
 }
+.boxed-section-none {
+    background: none !important;
+    background-color: none !important;
+    padding: 30px 0;
+    box-shadow: none;
+}
 
 ::placeholder { 
     color: var(--color-primary-light);
@@ -567,6 +576,7 @@ hr {
 .jquery-modal .assigned-person {
     margin-bottom: 10px;
 }
+
 /*------------------------------------------------------------------
 // Title Accordion
 ------------------------------------------------------------------*/
@@ -594,4 +604,37 @@ hr {
 .accordion-item table tr th,
 .accordion-item table tr td {
     padding: 5px 20px;
+}
+
+/*------------------------------------------------------------------
+// Table
+------------------------------------------------------------------*/
+table thead th {
+    font-weight: bold;
+    font-size: var(--font-size-a-desktop);
+    color: var(--color-font);
+}
+table thead tr {
+    background: var(--color-white);
+}
+table th,
+table td {
+    vertical-align: middle;
+    padding: 10px 20px;
+}
+table td {
+    padding: 15px 20px;
+}
+table * {
+    margin: 0;
+}
+table tbody tr:nth-child(even) {
+    background-color: var(--color-light-global);
+}
+table td * {
+    font-weight: 500;
+}
+table .tr-caption th {
+    padding-top: 20px;
+    padding-bottom: 40px;
 }

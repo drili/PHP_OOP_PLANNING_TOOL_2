@@ -1,0 +1,24 @@
+.component-team-efforts-table table img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+}
+.component-team-efforts-table .td-image-column {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.component-team-efforts-table .td-internal p {
+    color: var(--color-blue);
+}
+.component-team-efforts-table .td-client p {
+    color: var(--color-secondary);
+}
+.component-team-efforts-table .td-sick p {
+    color: var(--color-tertiary);
+}
+.component-team-efforts-table .td-offtime p {
+    color: var(--color-primary);
+}

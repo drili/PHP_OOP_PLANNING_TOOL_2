@@ -8,3 +8,9 @@
     font-weight: bold;
     font-size: var(--font-size-small);
 }
+.component-dashboard-settings {
+    height: 100%;
+}
+.component-dashboard-settings .boxed-section {
+    height: 100%;
+}
