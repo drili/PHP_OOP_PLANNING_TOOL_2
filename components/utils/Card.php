@@ -6,13 +6,14 @@
         $relative_directory, 
         $array_data, 
         $card_title,
-        $card_icon
+        $card_icon,
+        $cell_color
         ) { 
         ob_start();
     ?>
         <div class="cell small-12 large-<?php echo $cell_size; ?> component-card">
 
-            <div class="boxed-section">
+            <div class="boxed-section <?php echo $cell_color; ?>">
                 <div class="card-content">
 
                     <div class="title card-title section-mb">

@@ -10,6 +10,7 @@
     require $current_directory . "/../components/page_layout/PageTitle.php";
     require $current_directory . "/../components/utils/Card.php";
     require $current_directory . "/../components/static_components/DashboardSettings.php";
+    require $current_directory . "/../components/static_components/charts/TimeRegistrationsThisWeek.php";
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -32,7 +33,8 @@
                             $array_data = "";
                             $card_title = "Registered Time This Sprint";
                             $card_icon = "fa-clock";
-                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon);
+                            $cell_color = "";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
                         ?>
 
                         <?php 
@@ -40,7 +42,8 @@
                             $array_data = "";
                             $card_title = "Total Time This Sprint";
                             $card_icon = "fa-clock";
-                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon);
+                            $cell_color = "";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
                         ?>
 
                         <?php 
@@ -48,7 +51,22 @@
                             $array_data = "";
                             $card_title = "Finished Tasks This Sprint";
                             $card_icon = "fa-clock";
-                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon);
+                            $cell_color = "";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
+                        ?>
+
+                        <?php 
+                            $cell_size = "4";
+                            $array_data = "";
+                            $card_title = "Recommended daily avg. work time this sprint";
+                            $card_icon = "fa-clock";
+                            $cell_color = "primary";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
+                        ?>
+
+                        <?php
+                            $cell_size = "8";
+                            echo TimeRegistrationsThisWeek($cell_size);
                         ?>
 
                     </div>

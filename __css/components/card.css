@@ -39,3 +39,18 @@
     background-color: var(--color-secondary);
     z-index: 1;
 }
+
+.component-card .boxed-section.primary {
+    background-color: var(--color-primary);
+}
+.component-card .boxed-section.primary * {
+    color: var(--color-white);
+}
+.component-card .boxed-section.primary .card-divider-custom::after {
+    background-color: var(--color-white);
+}
+.component-card .boxed-section.primary .card-icon {
+    background-color: var(--color-primary-light);
+    padding: 10px;
+    border-radius: var(--border-radius-small);
+}
