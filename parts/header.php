@@ -74,6 +74,7 @@
 
         <!-- *** ChartJS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     </head>
     
         <body <?php if(isset($_SESSION["user"])) { if($user->getDarkModePreference($_SESSION["user"]["id"]) == '1') echo 'class="dark-mode"'; } ?>>

@@ -1,0 +1,36 @@
+.component-workflow-content .workflow-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.component-workflow-content .workflow-content .workflow-box {
+    /* background-color: var(--color-gray); */
+    border-radius: var(--border-radius-small);
+    padding: 10px;
+}
+
+.component-workflow-content .workflow-content .workflow-box * {
+    padding: 0;
+    margin: 0;
+}
+
+.component-workflow-content .workflow-content .workflow-box h4 {
+    border-right: 2px dotted;
+    margin-bottom: 20px;
+}
+
+
+.workflow-drop-section {
+    min-height: 100px;
+}
+
+.workflow-drop-section h4 {
+    margin: 0;
+}
+
+.workflow-drop-section .item {
+    cursor: pointer;
+    background-color: #fff;
+    padding: 20px;
+}
