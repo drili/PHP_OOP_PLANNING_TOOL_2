@@ -59,6 +59,7 @@
 
     --border-radius: 20px;
     --border-radius-small: 10px;
+    --border-radius-small-label: 5px;
     --cubic-bezier: cubic-bezier(.95,.34,.25,1.01);
     --box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     --box-shadow-hard: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -132,6 +133,9 @@ p {
     line-height: var(--line-height-desktop);
     font-weight: var(--font-weight-normal);
     color: var(--color-primary-light);
+}
+p.p-small {
+    font-size: var(--font-size-small);
 }
 
 a {
@@ -222,7 +226,7 @@ img {
 
 .container-views .grid-x-grid {
     display: grid;
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: 300px 1fr;
 }
 
 .grid-x-align-bottom {
@@ -301,7 +305,7 @@ button, a {
     max-height: 44px;
 }
 .btn-extra-small {
-    padding: 10px 40px;
+    padding: 10px 20px;
 }
 .btn.btn-full {
     width: 100%;

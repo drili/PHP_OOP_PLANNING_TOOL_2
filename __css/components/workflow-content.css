@@ -1,7 +1,7 @@
 .component-workflow-content .workflow-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .component-workflow-content .workflow-content .workflow-box {
@@ -33,7 +33,7 @@
 .workflow-drop-section .item {
     cursor: pointer;
     background-color: #fff;
-    padding: 20px !important;
+    padding: 15px !important;
 }
 
 .highlight {
@@ -44,3 +44,100 @@
     width: 100%;
 }
 
+.component-workflow-content .item-top-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 20px !important;
+}
+
+.component-workflow-content .item-title {
+    margin-bottom: 20px !important;
+}
+
+.component-workflow-content .item-title * {
+    line-height: 1.1rem;
+}
+
+.component-workflow-content .item-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 10px !important;
+}
+
+.component-workflow-content .item-bottom img {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.component-workflow-content .item-bottom .item-hours {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.component-workflow-content .item-bottom .item-hours p {
+    text-wrap: nowrap;
+}
+
+.component-workflow-content .customer.custom-label {
+    padding: 2px 5px;
+    border-radius: var(--border-radius-small-label);
+}
+
+.component-workflow-content .dragging-item {
+    box-shadow: var(--box-shadow-hard);
+}
+
+.component-workflow-content .item-images {
+    position: relative;
+    width: 100%;
+    min-height: 25px;
+}
+
+.component-workflow-content .item-images img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 30;
+}
+
+.component-workflow-content .item-images img:nth-child(1) {
+    right: 20px;
+    z-index: 20;
+}
+.component-workflow-content .item-images img:nth-child(2) {
+    right: 40px;
+    z-index: 10;
+}
+
+.component-workflow-content .item-image-counter {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: var(--color-secondary);
+    right: -2.5px;
+    top: -2.5px;
+    z-index: 100;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.component-workflow-content .item-image-counter p {
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.component-workflow-content .task-item-global i,
+.component-workflow-content .task-item-global svg {
+    color: var(--color-primary-light);
+}

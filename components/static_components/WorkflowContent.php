@@ -18,9 +18,35 @@
 
                             <div class="workflow-drop-section">
                                 <div class="item task-item-global">
-                                    Item 1
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis facilis praesentium nihil officiis possimus sed blanditiis sit ut doloribus repudiandae! </p>
+                                    <div class="item-top-section">
+                                        <span>
+                                            <div class="customer custom-label" style="background-color:#e3e3e3;">
+                                                <p class="p-small" style="color:#e3e3e3;filter: contrast(0.1);">hawdaha 1</p>
+                                            </div>
+                                        </span>
+                                        <span><p class="p-small">July 23</p></span>
+                                    </div>
+                                    
+                                    <div class="item-title">
+                                        <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, maxime.</h6>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="item-bottom">
+                                        <span class="item-hours">
+                                            <i class="fa fa-clock"></i>
+                                            <p class="p-small">6 hours</p>
+                                        </span>
+
+                                        <span class="item-images">
+                                            <img src="../assets/images/user/ai_jhgajhdjawd.jpg" alt="">
+                                            <img src="../assets/images/user/ai_jhgajhdjawd.jpg" alt="">
+                                            <img src="../assets/images/user/ai_jhgajhdjawd.jpg" alt="">
+                                        </span>
+                                    </div>
                                 </div>
+
                                 <div class="item task-item-global">Item 2</div>
                                 <div class="item task-item-global">Item 3</div>
                             </div>
@@ -32,7 +58,38 @@
                             </section>
 
                             <div class="workflow-drop-section">
-                                
+                                <div class="item task-item-global">
+                                    <div class="item-top-section">
+                                        <span>
+                                            <div class="customer custom-label" style="background-color:#e3e3e3;">
+                                                <p class="p-small" style="color:#e3e3e3;filter: contrast(0.1);">hawdaha 1</p>
+                                            </div>
+                                        </span>
+                                        <span><p class="p-small">July 23</p></span>
+                                    </div>
+                                    
+                                    <div class="item-title">
+                                        <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, maxime.</h6>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="item-bottom">
+                                        <span class="item-hours">
+                                            <i class="fa fa-clock"></i>
+                                            <p class="p-small">6 hours</p>
+                                        </span>
+
+                                        <span class="item-images">
+                                            <img src="../assets/images/user/ai_jhgajhdjawd.jpg" alt="">
+                                            <img src="../assets/images/user/ai_jhgajhdjawd.jpg" alt="">
+                                            <img src="../assets/images/user/ai_jhgajhdjawd.jpg" alt="">
+                                            <span class="item-image-counter">
+                                                <p class="p-small">+5</p>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -70,11 +127,13 @@
                     connectWith: ".workflow-drop-section",
                     placeholder: "highlight",
                     tolerance: "pointer",
-                    // revert: "true"
+                    revert: 200,
                     start: function (event, ui) {
+                        ui.item.addClass("dragging-item");
                         $(".workflow-drop-section").addClass("active-drop-area");
                     },
                     stop: function (event, ui) {
+                        ui.item.removeClass("dragging-item");
                         $(".workflow-drop-section").removeClass("active-drop-area");
                     }
                 }).disableSelection();
