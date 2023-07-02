@@ -641,3 +641,15 @@ table .tr-caption th {
     padding-top: 20px;
     padding-bottom: 40px;
 }
+
+/*------------------------------------------------------------------
+// Task Global
+------------------------------------------------------------------*/
+.task-item-global {
+    background: var(--color-white);
+    padding: 20px !important;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    margin-bottom: 15px !important;
+    box-shadow: var(--box-shadow-outline-hard);
+}

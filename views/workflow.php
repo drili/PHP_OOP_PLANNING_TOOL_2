@@ -14,7 +14,7 @@
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
     <?php 
         $title = "Workflow";
-        $description = "Welcome to your workflow area. Complete tasks by assigning them to the 'done' column.";
+        $description = "Welcome to your workflow area. Complete tasks by dragging them to the 'done' column.";
         echo PageTitle($title, $description);
     ?>
 
