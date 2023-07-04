@@ -8,7 +8,7 @@
         $card_title,
         $card_icon,
         $cell_color
-        ) { 
+    ) { 
         ob_start();
     ?>
         <div class="cell small-12 large-<?php echo $cell_size; ?> component-card">
@@ -24,9 +24,11 @@
                     </div>
 
                     <div class="card-content">
-                        <h1>0 Hours</h1>
+                        <h1>
+                            <?php echo $array_data["value"] . " " . $array_data["suffix"]; ?>
+                        </h1>
                         <span class="card-divider-custom section-mb-small"></span>
-                        <p>50% of total (100)</p>
+                        <p>50% of total (<?php echo $array_data["total"]; ?>)</p>
                     </div>
 
                 </div> <!-- .card-content -->

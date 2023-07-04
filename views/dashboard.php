@@ -12,6 +12,13 @@
     require $current_directory . "/../components/static_components/DashboardSettings.php";
     require $current_directory . "/../components/static_components/charts/TimeRegistrationsThisWeek.php";
     require $current_directory . "/../components/static_components/tables/TeamEffortsTable.php";
+
+    // *** Classes
+    require $current_directory . "/../classes/Info.php";
+    require $current_directory . "/../classes/Sprints.php";
+
+    $sprint_info = new Sprints($db);
+    $current_sprint_id = $sprint_info->getCurrentSprintID();
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -29,9 +36,18 @@
                 <div class="grid-container-fluid components">
                     <div class="grid-x grid-margin-x grid-x-component">
 
-                        <?php 
+                        <?php
+                            $info_time_registered = new Info($db);
+                            $info_time_registered->sprint_id = $current_sprint_id;
+                            $info_time_registered->user_id = $_SESSION["user"]["id"];
+                            $info_time_registered_res = $info_time_registered->timeRegisteredThisSprint();
+
                             $cell_size = "4";
-                            $array_data = "";
+                            $array_data = [
+                                "value" => $info_time_registered_res[0]["tr_amount"],
+                                "suffix" => "Hours",
+                                "total" => "100"
+                            ];
                             $card_title = "Registered Time This Sprint";
                             $card_icon = "fa-clock";
                             $cell_color = "";
@@ -40,7 +56,11 @@
 
                         <?php 
                             $cell_size = "4";
-                            $array_data = "";
+                            $array_data = [
+                                "value" => "10",
+                                "suffix" => "Hours",
+                                "total" => "100"
+                            ];
                             $card_title = "Total Time This Sprint";
                             $card_icon = "fa-clock";
                             $cell_color = "";
@@ -49,7 +69,11 @@
 
                         <?php 
                             $cell_size = "4";
-                            $array_data = "";
+                            $array_data = [
+                                "value" => "231",
+                                "suffix" => "Hours",
+                                "total" => "1020"
+                            ];
                             $card_title = "Finished Tasks This Sprint";
                             $card_icon = "fa-clock";
                             $cell_color = "";
@@ -58,7 +82,11 @@
 
                         <?php 
                             $cell_size = "4";
-                            $array_data = "";
+                            $array_data = [
+                                "value" => "20",
+                                "suffix" => "Hours",
+                                "total" => "120"
+                            ];
                             $card_title = "Recommended daily avg. work time this sprint";
                             $card_icon = "fa-clock";
                             $cell_color = "primary";
