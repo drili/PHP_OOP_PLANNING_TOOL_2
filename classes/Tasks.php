@@ -56,12 +56,18 @@
 
                 // *** Insert task persons into "tasks_persons"
                 $task_id_inserted = mysqli_insert_id($this->db->conn);
+                $task_persons_count = count($this->task_persons);
+                $time_percentage_total = 100;
+                $time_percentage_alloc = abs(round(($time_percentage_total / $task_persons_count) ,2));
+
                 foreach ($this->task_persons as $person_id) {
                     $query = "INSERT INTO tasks_persons
                     (task_id,
-                    person_id) VALUES
+                    person_id,
+                    time_percentage_allocated) VALUES
                     ('". $task_id_inserted ."',
-                    '". $person_id ."')";
+                    '". $person_id ."',
+                    '". $time_percentage_alloc ."')";
 
                     $this->db->conn->query($query);
                 }
