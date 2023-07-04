@@ -10,7 +10,17 @@
         $cell_color
     ) { 
         ob_start();
+
+        $divider_percentage = abs(
+            round(($array_data["value"] / $array_data["total"]) * 100, 2)
+        );
     ?>
+        <style>
+            .component-card .card-divider-custom::after {
+                width: <?php echo $divider_percentage?>;
+            }
+        </style>
+
         <div class="cell small-12 large-<?php echo $cell_size; ?> component-card">
 
             <div class="boxed-section <?php echo $cell_color; ?>">
@@ -28,7 +38,7 @@
                             <?php echo $array_data["value"] . " " . $array_data["suffix"]; ?>
                         </h1>
                         <span class="card-divider-custom section-mb-small"></span>
-                        <p>50% of total (<?php echo $array_data["total"]; ?>)</p>
+                        <p><?php echo $divider_percentage?>% of total (<?php echo $array_data["total"]; ?>)</p>
                     </div>
 
                 </div> <!-- .card-content -->

@@ -19,6 +19,10 @@
 
     $sprint_info = new Sprints($db);
     $current_sprint_id = $sprint_info->getCurrentSprintID();
+
+    $info_total_time = new Info($db);
+    $info_total_time->sprint_id = $current_sprint_id;
+    $info_total_time_res = $info_total_time->totalTimeThisSprint();
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -46,7 +50,7 @@
                             $array_data = [
                                 "value" => $info_time_registered_res[0]["tr_amount"],
                                 "suffix" => "Hours",
-                                "total" => "100"
+                                "total" => $info_total_time_res
                             ];
                             $card_title = "Registered Time This Sprint";
                             $card_icon = "fa-clock";
@@ -60,7 +64,7 @@
                                 "value" => "10",
                                 "suffix" => "Hours",
                                 "total" => "100"
-                            ];
+                             ];
                             $card_title = "Total Time This Sprint";
                             $card_icon = "fa-clock";
                             $cell_color = "";

@@ -34,7 +34,6 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 50%;
     height: 4px;
     background-color: var(--color-secondary);
     z-index: 1;
