@@ -28,6 +28,7 @@
     width: 100%;
     height: 4px;
     background-color: var(--color-secondary-light);
+    overflow: hidden;
 }
 .component-card .card-divider-custom::after {
     content: "";

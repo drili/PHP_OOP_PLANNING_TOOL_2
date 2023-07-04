@@ -14,14 +14,16 @@
         $divider_percentage = abs(
             round(($array_data["value"] / $array_data["total"]) * 100, 2)
         );
+
+        $random_id = generateRandomID();
     ?>
         <style>
-            .component-card .card-divider-custom::after {
-                width: <?php echo $divider_percentage?>;
+            <?php echo "#".$random_id; ?> .card-divider-custom::after {
+                width: <?php echo $divider_percentage?>%;
             }
         </style>
 
-        <div class="cell small-12 large-<?php echo $cell_size; ?> component-card">
+        <div class="cell small-12 large-<?php echo $cell_size; ?> component-card" id="<?php echo $random_id; ?>">
 
             <div class="boxed-section <?php echo $cell_color; ?>">
                 <div class="card-content">

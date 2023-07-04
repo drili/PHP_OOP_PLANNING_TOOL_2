@@ -51,7 +51,6 @@
             } else {
                 return "0";
             }
-            
         }
 
         public function totalTimeThisSprint() {
@@ -80,5 +79,44 @@
             
             $total_time = abs(round(count($workdays) * 7.5 ,2));
             return $total_time;
+        }
+
+        public function totalAllocatedTimeThisSprint() {
+            $sprint_id = mysqli_real_escape_string($this->db->conn, $this->sprint_id);
+            $user_id = mysqli_real_escape_string($this->db->conn, $this->user_id);
+
+            $query = "SELECT SUM(tasks.task_low + tasks.task_high) / 2 AS task_median
+            FROM tasks
+            LEFT JOIN tasks_persons ON tasks.task_id = tasks_persons.task_id
+            WHERE tasks.sprint_id = $sprint_id AND tasks_persons.person_id = $user_id";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res->num_rows > 0) {
+                return $query_res->fetch_assoc();
+            } else {
+                return "0";
+            }
+        }
+
+        public function userFinishedTasks() {
+            $user_id = mysqli_real_escape_string($this->db->conn, $this->user_id);
+
+            $query = "SELECT tasks_persons.*,
+            tasks.*
+            FROM tasks_persons
+            LEFT JOIN tasks ON tasks.task_id = tasks_persons.task_id
+            WHERE tasks_persons.person_id = $user_id";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res->num_rows > 0) {
+                $res_array = [];
+                while ($row = $query_res->fetch_assoc()) {
+                    $res_array[] = $row;
+                }
+
+                return $res_array;
+            } else {
+                return "0";
+            }
         }
     }
