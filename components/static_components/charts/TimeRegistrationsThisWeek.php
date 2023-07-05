@@ -30,62 +30,62 @@
             // *** Bar Chart - Time registrations
             const chartContainer = document.querySelector('.chart-container');
 
-            const currentDate = new Date();
-            const currentDay = currentDate.getDay();
-            const mondayOffset = currentDay === 0 ? -6 : 1 - currentDay; // Calculate the offset to Monday
-            currentDate.setDate(currentDate.getDate() + mondayOffset);
+            fetch('../AJAX/components/AJAX_POST_fetch-data-this-week.php')
+                .then(response => response.json())
+                .then(data => {
+                    const dates = data.week_dates;
+                    const valuesArr = data.time_regs;
+                    // console.log({valuesArr});
 
-
-            const dataTimeReg = [];
-            for (let i = 0; i < 5; i++) {
-            const date = new Date(currentDate);
-            date.setDate(date.getDate() + i);
-
-            // Generate a random time registrations total (replace with your own data)
-            const total = Math.floor(Math.random() * 10) + 1;
-
-            // Create an object for each day's data
-            dataTimeReg.push({ date, total });
-            }
-
-            const labels = dataTimeReg.map(entry => formatDateString(entry.date));
-            const values = dataTimeReg.map(entry => entry.total);
-
-            new Chart('bar-chart', {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                data: values,
-                backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
-                borderColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
-                borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                x: {
-                    grid: {
-                    display: false
-                    },
-                    ticks: {
-                    display: true
+                    const dataTimeReg = [];
+                    for (let i = 0; i < dates.length; i++) {
+                        const date = new Date(dates[i]);
+                        const total = Math.floor(Math.random() * 10) + 1;
+                        dataTimeReg.push({ date, total });
                     }
-                },
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                    display: false
-                    }
-                }
-                },
-                plugins: {
-                legend: {
-                    display: false
-                }
-                }
-            }
-            });
+   
+                    const labels = dataTimeReg.map(entry => formatDateString(entry.date));
+                    const values = valuesArr.map(entry => entry.time_registration_amount);
+
+                    // console.log({ values });
+
+                    new Chart('bar-chart', {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: values,
+                                backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
+                                borderColor: getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    display: true
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    display: false
+                                }
+                            }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error:', error));
 
             function formatDateString(date) {
                 const year = date.getFullYear();
@@ -93,8 +93,6 @@
                 const day = String(date.getDate()).padStart(2, '0');
                 return `${year}-${month}-${day}`;
             }
-
-
         </script>
 
     <?php

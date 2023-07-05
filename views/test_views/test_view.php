@@ -8,6 +8,9 @@
 <body>
     <h1>Test</h1>
 
+    <hr>
+    <hr>
+
     <?php
         $current_directory = dirname(__FILE__);
         $relative_directory = "../../";
@@ -26,6 +29,17 @@
         echo "Start Date: " . $start_date_string;
         echo "End Date: " . $end_date_string;
     ?>
+
+    <hr>
+    <hr>
+
+    <h1>getDatesThisWeek</h1>
+    <div>
+    <?php
+        $week_dates = getDatesThisWeek();
+        print_r($week_dates);
+    ?>
+    </div>
 
     <hr>
     <hr>
