@@ -69,7 +69,7 @@
                                 </div>
 
                                 <div class="modal-label">
-                                    <p>Task ID: <?php echo $data_task_id; ?></p>
+                                    <p><?php echo $response["query_status"][0]["customer_type"]; ?></p>
                                 </div>
 
                                 <div class="modal-label">
@@ -80,7 +80,11 @@
                                     <p><?php echo $response["query_status"][0]["label_name"]; ?></p>
                                 </div>
 
-                                <div class="modal-label">
+                                <div class="modal-label label-blue">
+                                    <p>Task ID : <?php echo $data_task_id; ?></p>
+                                </div>
+
+                                <div class="modal-label label-blue">
                                     <p><?php echo $response["query_status"][0]["sprint_name"]; ?></p>
                                 </div>
                             </section>
@@ -151,6 +155,7 @@
                                         <div class="grid-x grid-margin-x grid-x-align-bottom">
 
                                             <input type="hidden" name="task_id" value="<?php echo $data_task_id; ?>">
+                                            <input type="hidden" name="registration_type" value="<?php echo $response["query_status"][0]["customer_type"]; ?>">
 
                                             <div class="cell small-12 large-2">
                                                 <label for="task_register_time">Hours</label>

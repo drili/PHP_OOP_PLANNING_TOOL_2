@@ -536,10 +536,17 @@ hr {
     background-color: var(--color-purple-light);
     margin-bottom: 10px;
 }
+.jquery-modal .section-labels .modal-label.label-blue {
+    border-radius: var(--border-radius-small);
+    background-color: var(--color-blue-light);
+}
 .jquery-modal .section-labels .modal-label p {
     color: var(--color-purple);
     font-size: var(--font-size-small);
     font-weight: bold;
+}
+.jquery-modal .section-labels .modal-label.label-blue p {
+    color: var(--color-blue);
 }
 .jquery-modal .assigned-person {
     display: flex;

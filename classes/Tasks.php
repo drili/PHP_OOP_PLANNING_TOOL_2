@@ -215,18 +215,21 @@
             $task_id = mysqli_real_escape_string($this->db->conn, $this->task_id);
             $person_id = mysqli_real_escape_string($this->db->conn, $this->person_id);
             $time_registration_note = mysqli_real_escape_string($this->db->conn, $this->time_registration_note);
+            $task_registration_type = mysqli_real_escape_string($this->db->conn, $this->task_registration_type);
 
             $query = "INSERT INTO time_registrations
             (time_registration_amount,
             time_registration_date,
             task_id,
             person_id,
-            time_registration_note) VALUES
+            time_registration_note,
+            registration_type) VALUES
             ('$time_registration_amount',
             '$time_registration_date',
             '$task_id',
             '$person_id',
-            '$time_registration_note')";
+            '$time_registration_note',
+            '$task_registration_type')";
 
             $this->db->conn->query($query);
 

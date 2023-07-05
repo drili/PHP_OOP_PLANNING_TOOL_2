@@ -13,6 +13,7 @@
     
     $task_register_time = $_POST["task_register_time"];
     $task_register_time_date = $_POST["task_register_time_date"];
+    $task_registration_type = $_POST["registration_type"];
     $task_id = $_POST["task_id"];
     $person_id = $_SESSION["user"]["id"];
     $time_registration_note = "";
@@ -23,6 +24,7 @@
         $tasks->task_id = $task_id;
         $tasks->person_id = $person_id;
         $tasks->time_registration_note = $time_registration_note;
+        $tasks->task_registration_type = $task_registration_type;
 
         $response = $tasks->taskTimeRegistration();
 
