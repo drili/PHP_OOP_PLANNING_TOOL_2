@@ -188,4 +188,53 @@
                 ];
             }
         }
+
+        public function teamTimeRegistrationsUser() {
+            $sprint_id = mysqli_real_escape_string($this->db->conn, $this->sprint_id);
+            $user_id = mysqli_real_escape_string($this->db->conn, $this->user_id);
+
+            $query_sprint = "SELECT * FROM sprints WHERE sprint_id = $sprint_id";
+            $query_sprint_res = $this->db->conn->query($query_sprint);
+
+            while ($row = $query_sprint_res->fetch_assoc()) {
+                $start_date_string = $this->sprintStartDate($row["sprint_name"]);
+                $end_date_string = $this->sprintEndDate($row["sprint_name"]);
+            }
+
+            $query = "SELECT
+                users.id,
+                users.username,
+                users.profile_image,
+                SUM(CASE WHEN time_registrations.registration_type = 'client' THEN time_registrations.time_registration_amount ELSE 0 END) AS sum_client_time,
+                SUM(CASE WHEN time_registrations.registration_type = 'internal' THEN time_registrations.time_registration_amount ELSE 0 END) AS sum_internal_time,
+                SUM(CASE WHEN time_registrations.registration_type = 'off_time' THEN time_registrations.time_registration_amount ELSE 0 END) AS sum_offtime_time,
+                SUM(CASE WHEN time_registrations.registration_type = 'sick_time' THEN time_registrations.time_registration_amount ELSE 0 END) AS sum_sicktime_time,
+                SUM(time_registrations.time_registration_amount) AS sum_total
+            FROM
+                time_registrations
+            LEFT JOIN
+                users ON time_registrations.person_id = users.id
+            WHERE
+                time_registrations.time_registration_date BETWEEN '$start_date_string' AND '$end_date_string'
+            AND
+                users.id = $user_id
+            GROUP BY
+                users.id;
+            ";
+            $query_res = $this->db->conn->query($query);
+
+            if ($query_res->num_rows > 0) {
+                $result_array = mysqli_fetch_all($query_res, MYSQLI_ASSOC);
+                return [
+                    "result" => $result_array,
+                    "error_msg" => null
+                ];
+            } else {
+                return [
+                    "result" => null,
+                    "error_msg" => "ERROR_USER_DISTRIBUTION",
+                    "error" => mysqli_error($this->db->conn)
+                ];
+            }
+        }
     }

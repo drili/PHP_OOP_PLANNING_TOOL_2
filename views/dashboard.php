@@ -17,8 +17,12 @@
     require $current_directory . "/../classes/Info.php";
     require $current_directory . "/../classes/Sprints.php";
 
-    $sprint_info = new Sprints($db);
-    $current_sprint_id = $sprint_info->getCurrentSprintID();
+    if (isset($_GET["sprint_id"])) {
+        $current_sprint_id = $_GET["sprint_id"];
+    } else {
+        $sprint_info = new Sprints($db);
+        $current_sprint_id = $sprint_info->getCurrentSprintID();
+    }
 
     $info_total_time = new Info($db);
     $info_total_time->sprint_id = $current_sprint_id;
@@ -41,6 +45,9 @@
     $team_effort_array = new Info($db);
     $team_effort_array->sprint_id = $current_sprint_id;
     $team_effort_array_res = $team_effort_array->teamTimeRegistrations();
+
+    $sprints = new Sprints($db);
+    $sprints_arr = $sprints->getAllSprints();
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -147,7 +154,7 @@
                     <div class="grid-x grid-margin-x grid-x-component grid-x-height-full">
 
                         <?php 
-                            echo DashboardSettings();
+                            echo DashboardSettings($sprints_arr, $current_sprint_id);
                         ?>
 
                     </div>

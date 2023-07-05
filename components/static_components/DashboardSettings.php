@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo $relative_directory; ?>/__css/components/dashboard-settings.css">
 
 <?php
-    function DashboardSettings() { 
+    function DashboardSettings($sprints_arr, $current_sprint_id) { 
         ob_start();
     ?>
         <div class="cell small-12 large-12 component-dashboard-settings">
@@ -20,11 +20,18 @@
                         <h6>Sprint Filters</h6>
                         <p>Select sprint to filter by</p>
 
-                        <form action="" method="POST">
-                            <select name="select_sprint" id="SelectSprint" class="select-small">
-                                <option value="1">Januar</option>
-                                <option value="1">Januar</option>
-                                <option value="1">Januar</option>
+                        <form action="" method="GET">
+                            <select name="sprint_id" id="SelectSprint" class="select-small">
+                                <?php foreach($sprints_arr as $sprint) : ?>
+                                    <?php 
+                                        if($sprint["sprint_id"] == $current_sprint_id) {
+                                            $selected = "selected";
+                                        } else {
+                                            $selected = "";
+                                        }
+                                    ?>
+                                    <option value="<?php echo $sprint["sprint_id"];?>" <?php echo $selected; ?>><?php echo $sprint["sprint_name"]; ?></option>
+                                <?php endforeach; ?>
                             </select>
 
                             <button class="btn btn-primary btn-extra-small margin-0">
@@ -56,52 +63,71 @@
 
         <script>
             // *** Chart JS Dougnut Chart
-            const data = {
-                labels: ['Blue', 'Green', 'Red', 'Orange'],
-                datasets: [
-                    {
-                    data: [30, 40, 10, 20],
-                    backgroundColor: [
-                        getComputedStyle(document.documentElement).getPropertyValue('--color-blue'),
-                        getComputedStyle(document.documentElement).getPropertyValue('--color-secondary'),
-                        getComputedStyle(document.documentElement).getPropertyValue('--color-tertiary'),
-                        getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
-                    ],
-                    borderWidth: 0,
-                    },
-                ],
-            };
-
-            const options = {
-                responsive: true,
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                    display: false,
-                    },
+            const sprint_id = <?php echo $current_sprint_id; ?>;
+            fetch('../AJAX/components/AJAX_POST_user-time-distribution.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
-            };
+                body: JSON.stringify({ sprint_id })
+            })
+                .then(response => response.json())
+                .then(response_data => {
+                    console.log(response_data.result[0]);
 
-            const donutChart = new Chart(document.getElementById('donut-chart'), {
-                type: 'doughnut',
-                data: data,
-                options: options,
-            });
+                    const data = {
+                        labels: ['Client Time', 'Internal Time', 'Off Time', 'Sick Time'],
+                        datasets: [
+                            {
+                            data: [
+                                response_data.result[0].sum_client_time,
+                                response_data.result[0].sum_internal_time,
+                                response_data.result[0].sum_offtime_time,
+                                response_data.result[0].sum_sicktime_time
+                            ],
+                            backgroundColor: [
+                                getComputedStyle(document.documentElement).getPropertyValue('--color-blue'),
+                                getComputedStyle(document.documentElement).getPropertyValue('--color-secondary'),
+                                getComputedStyle(document.documentElement).getPropertyValue('--color-tertiary'),
+                                getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
+                            ],
+                            borderWidth: 0,
+                            },
+                        ],
+                    };
 
-            // * Chart JS data labels and values
-            const donutChartDataset = document.querySelector(".donut-chart-dataset");
-            data.datasets.forEach(function(dataset, index) {
-                dataset.data.forEach(function(dataPoint, dataIndex) {
-                    const label = data.labels[dataIndex];
-                    const value = dataPoint;
+                    const options = {
+                        responsive: true,
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                            display: false,
+                            },
+                        },
+                    };
 
-                    const p = document.createElement("p");
-                    p.textContent = `* Label: ${label}, Value: ${value}`;
-                    p.style.color = dataset.backgroundColor[dataIndex % dataset.backgroundColor.length];
+                    const donutChart = new Chart(document.getElementById('donut-chart'), {
+                        type: 'doughnut',
+                        data: data,
+                        options: options,
+                    });
 
-                    donutChartDataset.appendChild(p);
-                });
-            });
+                    // * Chart JS data labels and values
+                    const donutChartDataset = document.querySelector(".donut-chart-dataset");
+                    data.datasets.forEach(function(dataset, index) {
+                        dataset.data.forEach(function(dataPoint, dataIndex) {
+                            const label = data.labels[dataIndex];
+                            const value = dataPoint;
+
+                            const p = document.createElement("p");
+                            p.textContent = `* Label: ${label}, Value: ${value}`;
+                            p.style.color = dataset.backgroundColor[dataIndex % dataset.backgroundColor.length];
+
+                            donutChartDataset.appendChild(p);
+                        });
+                    });
+                })
+                .catch(error => console.error('Error:', error));
 
             // donut-chart-dataset
             // console.log({data});

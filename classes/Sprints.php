@@ -59,4 +59,16 @@
             return $task_labels_array;
         }
 
+        public function getAllSprints() {
+            $query = "SELECT * FROM sprints";
+            $query_res = $this->db->conn->query($query);
+            
+            $sprints_arr = array();
+            while ($row = $query_res->fetch_assoc()) {
+                $sprints_arr[] = $row;
+            }
+
+            return $sprints_arr;
+        }
+
     }
