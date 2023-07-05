@@ -119,4 +119,28 @@
                 return "0";
             }
         }
+
+        public function userTimeRegistrationsCount() {
+            $user_id = mysqli_real_escape_string($this->db->conn, $this->user_id);
+            $sprint_id = mysqli_real_escape_string($this->db->conn, $this->sprint_id);
+
+            $query_sprint = "SELECT * FROM sprints WHERE sprint_id = $sprint_id";
+            $query_sprint_res = $this->db->conn->query($query_sprint);
+
+            while ($row = $query_sprint_res->fetch_assoc()) {
+                $start_date_string = $this->sprintStartDate($row["sprint_name"]);
+                $end_date_string = $this->sprintEndDate($row["sprint_name"]);
+            }
+
+            $query = "SELECT * FROM time_registrations 
+            WHERE person_id = $user_id
+            AND time_registration_date BETWEEN '$start_date_string' AND '$end_date_string'";
+            $query_res = $this->db->conn->query($query);
+
+            if($query_res->num_rows > 0) {
+                return $query_res->num_rows;
+            } else {
+                return "0";
+            }
+        }
     }

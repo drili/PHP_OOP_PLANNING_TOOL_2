@@ -32,6 +32,11 @@
     $user_finished_tasks = new Info($db);
     $user_finished_tasks->user_id = $_SESSION["user"]["id"];
     $user_finished_tasks_res = $user_finished_tasks->userFinishedTasks();
+
+    $user_time_reg_counts = new Info($db);
+    $user_time_reg_counts->user_id = $_SESSION["user"]["id"];
+    $user_time_reg_counts->sprint_id = $current_sprint_id;
+    $user_time_reg_counts_res = $user_time_reg_counts->userTimeRegistrationsCount();
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -75,7 +80,7 @@
                                 "total" => $info_total_time_res
                              ];
                             $card_title = "Allocated Time This Sprint";
-                            $card_icon = "fa-clock";
+                            $card_icon = "fa-hourglass-2";
                             $cell_color = "";
                             echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
                         ?>
@@ -96,20 +101,20 @@
                                 "total" => $tasks_total
                             ];
                             $card_title = "Finished Tasks This Sprint";
-                            $card_icon = "fa-clock";
+                            $card_icon = "fa-check";
                             $cell_color = "";
                             echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
                         ?>
 
-                        <?php 
+                        <?php
                             $cell_size = "4";
                             $array_data = [
-                                "value" => "20",
-                                "suffix" => "Hours",
-                                "total" => "120"
+                                "value" => $user_time_reg_counts_res,
+                                "suffix" => "Reg(s)",
+                                "total" => $user_time_reg_counts_res
                             ];
-                            $card_title = "Recommended daily avg. work time this sprint";
-                            $card_icon = "fa-clock";
+                            $card_title = "Time registrations this sprint";
+                            $card_icon = "fa-plus";
                             $cell_color = "primary";
                             echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
                         ?>
