@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="<?php echo $relative_directory; ?>/__css/components/time-registrations-this-week.css">
 
 <?php
-    function TimeRegistrationsThisWeek($cell_size) { 
+    function TimeRegistrationsThisWeek($cell_size, $cell_height) { 
         ob_start();
     ?>
         <div class="cell small-12 large-<?php echo $cell_size; ?> component-time-registrations-this-week">
 
-            <div class="boxed-section">
+            <div class="boxed-section" style="height: <?php echo $cell_height; ?>;">
                 <div class="time-reg-content">
 
                 <div class="title">

@@ -220,7 +220,8 @@ img {
 .grid-x-grid {
     display: grid;
 }
-.grid-x-height-full {
+.grid-x-height-full,
+.height-full {
     height: 100%;
 }
 

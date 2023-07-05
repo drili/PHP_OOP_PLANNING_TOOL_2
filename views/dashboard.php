@@ -73,7 +73,8 @@
                             $card_title = "Registered Time This Sprint";
                             $card_icon = "fa-clock";
                             $cell_color = "";
-                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
+                            $card_height = "";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color, $card_height);
                         ?>
 
                         <?php 
@@ -86,7 +87,8 @@
                             $card_title = "Allocated Time This Sprint";
                             $card_icon = "fa-hourglass-2";
                             $cell_color = "";
-                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
+                            $card_height = "";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color, $card_height);
                         ?>
 
                         <?php 
@@ -107,7 +109,8 @@
                             $card_title = "Finished Tasks This Sprint";
                             $card_icon = "fa-check";
                             $cell_color = "";
-                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
+                            $card_height = "";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color, $card_height);
                         ?>
 
                         <?php
@@ -120,12 +123,14 @@
                             $card_title = "Time registrations this sprint";
                             $card_icon = "fa-plus";
                             $cell_color = "primary";
-                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color);
+                            $card_height = "100%";
+                            echo Card($cell_size, $relative_directory, $array_data, $card_title, $card_icon, $cell_color, $card_height);
                         ?>
 
                         <?php
                             $cell_size = "8";
-                            echo TimeRegistrationsThisWeek($cell_size);
+                            $cell_height = "100%";
+                            echo TimeRegistrationsThisWeek($cell_size, $cell_height);
                         ?>
 
                         <?php

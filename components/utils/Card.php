@@ -7,7 +7,8 @@
         $array_data, 
         $card_title,
         $card_icon,
-        $cell_color
+        $cell_color,
+        $card_height
     ) { 
         ob_start();
 
@@ -25,7 +26,7 @@
 
         <div class="cell small-12 large-<?php echo $cell_size; ?> component-card" id="<?php echo $random_id; ?>">
 
-            <div class="boxed-section <?php echo $cell_color; ?>">
+            <div class="boxed-section <?php echo $cell_color; ?>" style="height: <?php echo $card_height; ?>;">
                 <div class="card-content">
 
                     <div class="title card-title section-mb">
