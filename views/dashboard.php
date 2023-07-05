@@ -37,6 +37,10 @@
     $user_time_reg_counts->user_id = $_SESSION["user"]["id"];
     $user_time_reg_counts->sprint_id = $current_sprint_id;
     $user_time_reg_counts_res = $user_time_reg_counts->userTimeRegistrationsCount();
+
+    $team_effort_array = new Info($db);
+    $team_effort_array->sprint_id = $current_sprint_id;
+    $team_effort_array_res = $team_effort_array->teamTimeRegistrations();
 ?>
 
 <?php require $current_directory . "/../parts/views_layout_top.php"; ?>
@@ -126,7 +130,7 @@
 
                         <?php
                             $cell_size = "12";
-                            echo TeamEffortsTable($cell_size);
+                            echo TeamEffortsTable($cell_size, $team_effort_array_res);
                         ?>
 
                     </div>
