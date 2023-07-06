@@ -20,6 +20,10 @@
     $user_info->user_id = $person_id;
     $user_info->sprint_id = $sprint_id;
     $user_info_arr = $user_info->teamTimeRegistrationsUser();
+
+    if ($user_info_arr["error_msg"] == "ERROR_USER_DISTRIBUTION") {
+        $user_info_arr = "ERROR_USER_DISTRIBUTION";
+    }
     
     echo json_encode($user_info_arr);
 ?>

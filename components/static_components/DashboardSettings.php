@@ -73,59 +73,67 @@
             })
                 .then(response => response.json())
                 .then(response_data => {
-                    console.log(response_data.result[0]);
-
-                    const data = {
-                        labels: ['Client Time', 'Internal Time', 'Off Time', 'Sick Time'],
-                        datasets: [
-                            {
-                            data: [
-                                response_data.result[0].sum_client_time,
-                                response_data.result[0].sum_internal_time,
-                                response_data.result[0].sum_offtime_time,
-                                response_data.result[0].sum_sicktime_time
+                    if (response_data != "ERROR_USER_DISTRIBUTION") {
+                        const data = {
+                            labels: ['Client Time', 'Internal Time', 'Off Time', 'Sick Time'],
+                            datasets: [
+                                {
+                                data: [
+                                    response_data.result[0].sum_client_time,
+                                    response_data.result[0].sum_internal_time,
+                                    response_data.result[0].sum_offtime_time,
+                                    response_data.result[0].sum_sicktime_time
+                                ],
+                                backgroundColor: [
+                                    getComputedStyle(document.documentElement).getPropertyValue('--color-blue'),
+                                    getComputedStyle(document.documentElement).getPropertyValue('--color-secondary'),
+                                    getComputedStyle(document.documentElement).getPropertyValue('--color-tertiary'),
+                                    getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
+                                ],
+                                borderWidth: 0,
+                                },
                             ],
-                            backgroundColor: [
-                                getComputedStyle(document.documentElement).getPropertyValue('--color-blue'),
-                                getComputedStyle(document.documentElement).getPropertyValue('--color-secondary'),
-                                getComputedStyle(document.documentElement).getPropertyValue('--color-tertiary'),
-                                getComputedStyle(document.documentElement).getPropertyValue('--color-primary'),
-                            ],
-                            borderWidth: 0,
+                        };
+
+                        const options = {
+                            responsive: true,
+                            cutout: '70%',
+                            plugins: {
+                                legend: {
+                                display: false,
+                                },
                             },
-                        ],
-                    };
+                        };
 
-                    const options = {
-                        responsive: true,
-                        cutout: '70%',
-                        plugins: {
-                            legend: {
-                            display: false,
-                            },
-                        },
-                    };
-
-                    const donutChart = new Chart(document.getElementById('donut-chart'), {
-                        type: 'doughnut',
-                        data: data,
-                        options: options,
-                    });
-
-                    // * Chart JS data labels and values
-                    const donutChartDataset = document.querySelector(".donut-chart-dataset");
-                    data.datasets.forEach(function(dataset, index) {
-                        dataset.data.forEach(function(dataPoint, dataIndex) {
-                            const label = data.labels[dataIndex];
-                            const value = dataPoint;
-
-                            const p = document.createElement("p");
-                            p.textContent = `* Label: ${label}, Value: ${value}`;
-                            p.style.color = dataset.backgroundColor[dataIndex % dataset.backgroundColor.length];
-
-                            donutChartDataset.appendChild(p);
+                        const donutChart = new Chart(document.getElementById('donut-chart'), {
+                            type: 'doughnut',
+                            data: data,
+                            options: options,
                         });
-                    });
+
+                        // * Chart JS data labels and values
+                        const donutChartDataset = document.querySelector(".donut-chart-dataset");
+                        data.datasets.forEach(function(dataset, index) {
+                            dataset.data.forEach(function(dataPoint, dataIndex) {
+                                const label = data.labels[dataIndex];
+                                const value = dataPoint;
+
+                                const p = document.createElement("p");
+                                p.textContent = `* Label: ${label}, Value: ${value}`;
+                                p.style.color = dataset.backgroundColor[dataIndex % dataset.backgroundColor.length];
+
+                                donutChartDataset.appendChild(p);
+                            });
+                        });
+                    } else {
+                        // TODO:
+                        // finish this code
+                        const donutChartDataset = document.querySelector(".donut-chart-dataset");
+                        const donutChart = document.querySelector("#donut-chart");
+
+                        donutChartDataset.innerHTML = `<p class="p-small">No registrations found.</p>`;
+                        donutChart.remove();
+                    }
                 })
                 .catch(error => console.error('Error:', error));
 

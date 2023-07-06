@@ -12,9 +12,20 @@
     ) { 
         ob_start();
 
+        if ($array_data["total"] == null || $array_data["total"] == 0) {
+            $array_total = 1;
+        } else {
+            $array_total = $array_data["total"];
+        }
         $divider_percentage = abs(
-            round(($array_data["value"] / $array_data["total"]) * 100, 2)
+            round(($array_data["value"] / $array_total) * 100, 2)
         );
+
+        if ($array_data["value"] == null || $array_data["value"] == 0) {
+            $array_value = 0;
+        } else {
+            $array_value = $array_data["value"];
+        }
 
         $random_id = generateRandomID();
     ?>
@@ -38,7 +49,7 @@
 
                     <div class="card-content">
                         <h1>
-                            <?php echo $array_data["value"] . " " . $array_data["suffix"]; ?>
+                            <?php echo $array_value . " " . $array_data["suffix"]; ?>
                         </h1>
                         <span class="card-divider-custom section-mb-small"></span>
                         <p><?php echo $divider_percentage?>% of total (<?php echo $array_data["total"]; ?>)</p>
